@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/24 01:22:37 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/24 02:33:31 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *src);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-
-int		ft_isblank(int c);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

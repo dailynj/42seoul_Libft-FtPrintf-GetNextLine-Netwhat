@@ -6,11 +6,16 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 22:44:03 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/24 00:32:55 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/24 02:33:10 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int		ft_isblank(int c)
+{
+	return (c == 32 || (c >= 9 && c <= 13));
+}
 
 int		ft_atoi(const char *str)
 {
