@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/23 01:04:25 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/23 16:21:59 by najlee           ###   ########.fr       */
+/*   Created: 2020/12/23 14:50:34 by najlee            #+#    #+#             */
+/*   Updated: 2020/12/23 16:21:45 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (!dstsize)
-		return (ft_strlen(src));
-	if (!dst)
-		return (0);
-	while (i < (dstsize - 1) && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	
 }

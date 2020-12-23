@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/23 14:45:05 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/23 16:21:25 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ void	*ft_memmove(void *dest, const void *src, size_t len);
 void	*ft_memchr(void *ptr, int value, size_t num);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
 size_t	ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 #endif
