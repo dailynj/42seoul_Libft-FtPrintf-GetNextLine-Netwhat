@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/23 19:16:52 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/23 19:56:49 by najlee           ###   ########.fr       */
+/*   Created: 2020/12/23 19:46:51 by najlee            #+#    #+#             */
+/*   Updated: 2020/12/23 21:10:17 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	while (*str != '\0')
+	int	i;
+
+	i = ft_strlen(str);
+	while (i >= 0)
 	{
-		if (*str == c)
-			return ((char *)str);
-		++str;
+		if (str[i] == c)
+			return ((char *)&str[i]);
+		--i;
 	}
-	if (c == '\0')
-		return ((char *)str);
 	return (0);
 }
