@@ -6,14 +6,14 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 18:29:40 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/22 19:34:13 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/23 14:37:25 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 void					*ft_memmove(void *dest,
-							const void *src, unsigned int len)
+							const void *src, size_t len)
 {
 	unsigned int		i;
 	unsigned char		*tmp;

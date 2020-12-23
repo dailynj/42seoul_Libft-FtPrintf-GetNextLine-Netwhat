@@ -6,14 +6,14 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 13:41:57 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/22 18:16:04 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/23 14:36:25 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 void						*ft_memcpy(void *dest,
-								const void *src, unsigned int n)
+								const void *src, size_t n)
 {
 	unsigned int			i;
 	unsigned char			*tmp;

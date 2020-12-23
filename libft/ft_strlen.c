@@ -6,13 +6,13 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 23:45:38 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/23 01:00:37 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/23 14:38:04 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int		ft_strlen(const char *str)
+size_t		ft_strlen(const char *str)
 {
 	unsigned int	i;
 

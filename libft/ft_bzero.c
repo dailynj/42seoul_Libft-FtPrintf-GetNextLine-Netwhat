@@ -6,13 +6,13 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 23:47:12 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/22 00:20:40 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/23 14:34:31 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, unsigned int n)
+void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, '\0', n);
 }

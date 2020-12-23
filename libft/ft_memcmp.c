@@ -6,14 +6,13 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 21:37:08 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/22 23:51:46 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/23 14:38:59 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int						ft_memcmp(const void *str1,
-									const void *str2, unsigned int n)
+int						ft_memcmp(const void *str1,	const void *str2, size_t n)
 {
 	unsigned const char	*tmp1;
 	unsigned const char	*tmp2;
