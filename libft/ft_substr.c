@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 00:42:38 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/24 01:16:48 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/24 01:20:50 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,4 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-
 }
