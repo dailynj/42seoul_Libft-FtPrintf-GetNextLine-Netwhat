@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/23 22:44:03 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/24 00:32:55 by najlee           ###   ########.fr       */
+/*   Created: 2020/12/23 23:39:05 by najlee            #+#    #+#             */
+/*   Updated: 2020/12/24 00:30:49 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+char		*ft_strdup(const char *src)
 {
-	int	minus;
-	int	answer;
-	int	i;
+	char	*tmp;
+	int		src_len;
+	int		i;
 
 	i = 0;
-	minus = 1;
-	answer = 0;
-	while (ft_isblank(str[i]))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	src_len = ft_strlen(src);
+	if (!(tmp = malloc(src_len + 1)))
+		return (0);
+	while (src[i] != '\0')
 	{
-		if (str[i] == '-')
-			minus *= -1;
+		tmp[i] = src[i];
 		i++;
 	}
-	while (str[i] != '\0')
-	{
-		if (ft_isdigit(str[i]) == 1)
-			answer = answer * 10 + str[i] - '0';
-		else
-			break ;
-		i++;
-	}
-	return (minus * answer);
+	tmp[i] = 0;
+	return (tmp);
 }

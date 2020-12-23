@@ -1,41 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/23 22:44:03 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/24 00:32:55 by najlee           ###   ########.fr       */
+/*   Created: 2020/12/24 00:42:38 by najlee            #+#    #+#             */
+/*   Updated: 2020/12/24 01:16:48 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	minus;
-	int	answer;
-	int	i;
 
-	i = 0;
-	minus = 1;
-	answer = 0;
-	while (ft_isblank(str[i]))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			minus *= -1;
-		i++;
-	}
-	while (str[i] != '\0')
-	{
-		if (ft_isdigit(str[i]) == 1)
-			answer = answer * 10 + str[i] - '0';
-		else
-			break ;
-		i++;
-	}
-	return (minus * answer);
 }
