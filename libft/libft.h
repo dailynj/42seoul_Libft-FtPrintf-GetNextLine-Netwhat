@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/23 22:48:35 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/23 23:03:19 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,6 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+void	*ft_calloc(size_t count, size_t size);
+
 #endif
