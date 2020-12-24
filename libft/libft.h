@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/24 02:33:31 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/24 15:51:12 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ char	*ft_strdup(const char *src);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif

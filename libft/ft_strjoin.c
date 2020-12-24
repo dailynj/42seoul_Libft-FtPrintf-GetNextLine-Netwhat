@@ -6,58 +6,33 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 01:50:02 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/24 02:31:18 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/24 16:07:09 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *dest, const char *src)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
-	char *tmp;
-
-	tmp = dest;
-	while (*dest)
-		dest++;
-	while ((*dest++ = *src++) != '\0')
-	{
-	}
-	return (tmp);
-}
-
-char	*ft_strcpy(char *dest, const char *src)
-{
-	int i;
+	char	*tmp;
+	int		i;
 
 	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	return (dest);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char *tmp;
-
-	if (!(tmp = malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
-		return (0);
-	if (!s1)
-	{
-		ft_strcpy(tmp, (char *)s2);
-		tmp[ft_strlen(s1) + ft_strlen(s2)] = '\0';
-	}
+	if (!s1 && s2)
+		return (ft_strdup(s2));
+	else if (s1 && !s2)
+		return (ft_strdup(s1));
 	else if (s1 && s2)
 	{
-		ft_strcpy(tmp, (char *)s1);
-		ft_strcat(tmp, (char *)s2);
-		tmp[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+		if (!(tmp = malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+			return (0);
+		while (*s1)
+			tmp[i++] = *(s1++);
+		while (*s2)
+			tmp[i++] = *(s2++);
+		tmp[i] = '\0';
 	}
 	else
-	{
-		tmp[0] = '\0';
-	}
+		return (0);
 	return (tmp);
 }
