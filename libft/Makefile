@@ -6,7 +6,7 @@
 #    By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 17:37:46 by najlee            #+#    #+#              #
-#    Updated: 2020/12/26 19:20:56 by najlee           ###   ########.fr        #
+#    Updated: 2020/12/26 19:28:43 by najlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ SRCS	=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 			ft_putendl_fd.c ft_putnbr_fd.c
 
 BN_SRCS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c
-
+			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+			ft_lstmap.c
 
 OBJS	=	$(SRCS:.c=.o)
 BN_OBJS	=	$(BN_SRCS:.c=.o)
