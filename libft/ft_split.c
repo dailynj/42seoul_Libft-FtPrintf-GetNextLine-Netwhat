@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:38:24 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/26 14:12:23 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/26 15:06:05 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,16 @@ char		**ft_putresult(char **result, char const *s, char c)
 	{
 		if (!k && s[k] != c)
 			result[i][j++] = s[k];
-		else if (!k && s[k] == c)
-		{
-		}
 		else if (k && s[k] == c && s[k - 1] != c)
 		{
+			result[i][j] = '\0';
 			i++;
 			j = 0;
 		}
-		else if (k && s[k] == c && s[k - 1] == c)
-		{
-		}
 		else if (k && s[k] != c && s[k - 1] != c)
-		{
 			result[i][j++] = s[k];
-		}
 		else if (k && s[k] != c && s[k - 1] == c)
-		{
 			result[i][j++] = s[k];
-		}
 		k++;
 	}
 	return (result);
@@ -68,21 +59,20 @@ char		**ft_j_malresult(char **result, char const *s, char c)
 
 	i = 0;
 	j = 0;
-	k = 0;
-	while (s[k])
+	k = -1;
+	while (s[++k])
 	{
 		if (!k && s[k] != c)
 			j++;
-		if (k && s[k] == c && s[k - 1] != c)
+		else if (k && s[k] == c && s[k - 1] != c)
 		{
-			if (!(result[i] = (char *)malloc(j + 1)))
+			if (!(result[i] = (char *)malloc((sizeof(char)) * (j + 1))))
 				return (ft_free(result));
 			i++;
 			j = 0;
 		}
-		if (k && s[k] != c && s[k - 1] == c)
+		else if (k && s[k] != c)
 			j++;
-		k++;
 	}
 	if (j)
 		if (!(result[i] = (char *)malloc(j + 1)))
@@ -119,5 +109,6 @@ char		**ft_split(char const *s, char c)
 	if (!(result = (char **)malloc((sizeof(char *)) * (i_num + 1))))
 		return (0);
 	result = ft_j_malresult(result, s, c);
+	result[i_num] = 0;
 	return (ft_putresult(result, s, c));
 }
