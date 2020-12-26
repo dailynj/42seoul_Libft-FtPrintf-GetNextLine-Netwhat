@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 13:37:21 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/26 12:37:51 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/26 14:10:32 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
-	size_t  end;
+	size_t	end;
 	size_t	i;
 
 	if (!s1)
