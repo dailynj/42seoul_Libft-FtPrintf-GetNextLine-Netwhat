@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/23 23:02:15 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/26 12:32:12 by najlee           ###   ########.fr       */
+/*   Created: 2020/12/26 12:38:24 by najlee            #+#    #+#             */
+/*   Updated: 2020/12/26 12:45:02 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char **ft_split(char const *s, char c)
 {
-	char *tmp;
+	size_t i;
+	size_t j;
+	char **result;
 
-	tmp = malloc(count * size);
-	if (!tmp)
-		return (0);
-	ft_memset(tmp, 0, count * size);
-	return (tmp);
+	i = 0;
+	j = 0;
+	//malloc
+	while (*s)
+	{
+		if (*s == c)
+		{
+			s++;
+			while (*s == c)
+				s++;
+			i++;
+			j = 0;
+		}
+		result[i][j++] = *(s++);
+	}
+	return (result);
 }
