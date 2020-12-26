@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:38:24 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/26 15:06:05 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/26 20:29:01 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char		**ft_free(char **temp)
 	size_t	i;
 
 	i = 0;
-	while (temp[i] != 0)
+	while (temp[i])
 		free(temp[i++]);
 	free(temp);
 	return (0);
@@ -42,12 +42,12 @@ char		**ft_putresult(char **result, char const *s, char c)
 			i++;
 			j = 0;
 		}
-		else if (k && s[k] != c && s[k - 1] != c)
-			result[i][j++] = s[k];
-		else if (k && s[k] != c && s[k - 1] == c)
+		else if (k && s[k] != c)
 			result[i][j++] = s[k];
 		k++;
 	}
+	if (j)
+		result[i][j] = '\0';
 	return (result);
 }
 
@@ -75,7 +75,7 @@ char		**ft_j_malresult(char **result, char const *s, char c)
 			j++;
 	}
 	if (j)
-		if (!(result[i] = (char *)malloc(j + 1)))
+		if (!(result[i] = (char *)malloc((sizeof(char)) * (j + 1))))
 			return (ft_free(result));
 	return (result);
 }
@@ -104,6 +104,8 @@ char		**ft_split(char const *s, char c)
 	size_t	i_num;
 
 	if (!s)
+		return (0);
+	if (!c)
 		return (0);
 	i_num = ft_get_i_num(s, c);
 	if (!(result = (char **)malloc((sizeof(char *)) * (i_num + 1))))
