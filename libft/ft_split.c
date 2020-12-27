@@ -6,111 +6,86 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:38:24 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/26 20:29:01 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/27 19:06:15 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		**ft_free(char **temp)
+static char			**ft_freeall(char **s)
 {
-	size_t	i;
+	unsigned int	i;
 
 	i = 0;
-	while (temp[i])
-		free(temp[i++]);
-	free(temp);
-	return (0);
-}
-
-char		**ft_putresult(char **result, char const *s, char c)
-{
-	size_t	i;
-	size_t	j;
-	size_t	k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	while (s[k])
+	while (s[i] != NULL)
 	{
-		if (!k && s[k] != c)
-			result[i][j++] = s[k];
-		else if (k && s[k] == c && s[k - 1] != c)
-		{
-			result[i][j] = '\0';
-			i++;
-			j = 0;
-		}
-		else if (k && s[k] != c)
-			result[i][j++] = s[k];
-		k++;
-	}
-	if (j)
-		result[i][j] = '\0';
-	return (result);
-}
-
-char		**ft_j_malresult(char **result, char const *s, char c)
-{
-	size_t	i;
-	size_t	j;
-	size_t	k;
-
-	i = 0;
-	j = 0;
-	k = -1;
-	while (s[++k])
-	{
-		if (!k && s[k] != c)
-			j++;
-		else if (k && s[k] == c && s[k - 1] != c)
-		{
-			if (!(result[i] = (char *)malloc((sizeof(char)) * (j + 1))))
-				return (ft_free(result));
-			i++;
-			j = 0;
-		}
-		else if (k && s[k] != c)
-			j++;
-	}
-	if (j)
-		if (!(result[i] = (char *)malloc((sizeof(char)) * (j + 1))))
-			return (ft_free(result));
-	return (result);
-}
-
-size_t		ft_get_i_num(char const *s, char c)
-{
-	size_t	i;
-	size_t	num;
-
-	i = 0;
-	num = 0;
-	while (s[i])
-	{
-		if (!i && s[i] != c)
-			num++;
-		if (i && s[i] != c && s[i - 1] == c)
-			num++;
+		free(s[i]);
 		i++;
 	}
-	return (num);
+	free(s);
+	return (NULL);
 }
 
-char		**ft_split(char const *s, char c)
+static size_t		ft_wordcnt(const char *s, char d)
 {
-	char	**result;
-	size_t	i_num;
+	size_t			cnt;
+	size_t			i;
+
+	cnt = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != d)
+		{
+			cnt++;
+			while (s[i] && s[i] != d)
+				i++;
+		}
+		else
+			i++;
+	}
+	return (cnt);
+}
+
+static char			*ft_worddup(const char *s, char d)
+{
+	size_t			len;
+	char			*ptr;
+
+	len = 0;
+	while (s[len] && s[len] != d)
+		len++;
+	if (!(ptr = (char *)ft_calloc(len + 1, sizeof(char))))
+		return (NULL);
+	ft_strlcpy(ptr, s, len + 1);
+	return (ptr);
+}
+
+char				**ft_split(const char *s, char d)
+{
+	char			**ptr;
+	size_t			len;
+	size_t			i;
+	size_t			j;
 
 	if (!s)
-		return (0);
-	if (!c)
-		return (0);
-	i_num = ft_get_i_num(s, c);
-	if (!(result = (char **)malloc((sizeof(char *)) * (i_num + 1))))
-		return (0);
-	result = ft_j_malresult(result, s, c);
-	result[i_num] = 0;
-	return (ft_putresult(result, s, c));
+		return (NULL);
+	len = ft_wordcnt(s, d);
+	if (!(ptr = (char **)ft_calloc(len + 1, sizeof(char *))))
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (i < len && s[j])
+	{
+		if (s[j] != d)
+		{
+			if (!(ptr[i++] = ft_worddup(&(s[j]), d)))
+				return (ft_freeall(ptr));
+			while (s[j] && s[j] != d)
+				j++;
+		}
+		else
+			j++;
+	}
+	return (ptr);
 }
