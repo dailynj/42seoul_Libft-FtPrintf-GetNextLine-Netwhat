@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jongpark <jongpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/26 16:54:42 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/28 20:56:32 by najlee           ###   ########.fr       */
+/*   Created: 2020/12/19 20:13:15 by jongpark          #+#    #+#             */
+/*   Updated: 2020/12/20 12:24:23 by jongpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_bzero(void *s, size_t n)
 {
-	write(fd, &c, 1);
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = 0;
+		i++;
+	}
 }

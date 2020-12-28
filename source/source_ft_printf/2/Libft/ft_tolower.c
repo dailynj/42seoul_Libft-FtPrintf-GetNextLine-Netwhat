@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jongpark <jongpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/26 16:54:42 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/28 20:56:32 by najlee           ###   ########.fr       */
+/*   Created: 2020/12/21 13:02:04 by jongpark          #+#    #+#             */
+/*   Updated: 2020/12/22 14:36:23 by jongpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int		ft_tolower(int c)
 {
-	write(fd, &c, 1);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }

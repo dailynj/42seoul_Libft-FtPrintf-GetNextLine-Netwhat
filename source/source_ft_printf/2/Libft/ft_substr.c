@@ -3,37 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jongpark <jongpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/24 00:42:38 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/28 17:14:53 by najlee           ###   ########.fr       */
+/*   Created: 2020/12/21 14:07:39 by jongpark          #+#    #+#             */
+/*   Updated: 2020/12/22 15:02:19 by jongpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*tmp;
-	size_t	i;
+	unsigned int	i;
+	unsigned int	size;
+	char			*ptr;
 
-	i = 0;
 	if (!s)
-		return (0);
+		return (NULL);
+	size = 0;
 	if (start >= ft_strlen(s))
+		return ((char *)ft_calloc(1, sizeof(char)));
+	while (s[start + size] && size < len)
 	{
-		if (!(tmp = malloc(1)))
-			return (0);
-		tmp[0] = '\0';
-		return (tmp);
+		size++;
 	}
-	if (!(tmp = malloc(len + 1)))
-		return (0);
-	while (i < len && s[start + i])
+	ptr = (char *)ft_calloc(size + 1, sizeof(char));
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < size)
 	{
-		tmp[i] = s[start + i];
+		ptr[i] = s[start + i];
 		i++;
 	}
-	tmp[i] = '\0';
-	return (tmp);
+	return (ptr);
 }
