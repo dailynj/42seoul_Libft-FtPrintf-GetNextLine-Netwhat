@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_result.c                                  :+:      :+:    :+:   */
+/*   ft_print_result1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/30 14:02:19 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/30 14:58:41 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,21 @@ void		ft_x(t_guide *guide, va_list ap)
 
 	prefix = ft_x_prefix(guide);
 	str = va_arg(ap, unsigned int);
-	surfix = ft_u_surfix(guide);
+	surfix = ft_x_surfix(guide);
+	ft_putstr_fd(prefix, 1);
+	// --------------------------------------print unsigned int
+	ft_putstr_fd(surfix, 1);
+}
+
+void		ft_X(t_guide *guide, va_list ap)
+{
+	char				*prefix;
+	unsigned int		str;
+	char				*surfix;
+
+	prefix = ft_X_prefix(guide);
+	str = va_arg(ap, unsigned int);
+	surfix = ft_X_surfix(guide);
 	ft_putstr_fd(prefix, 1);
 	// --------------------------------------print unsigned int
 	ft_putstr_fd(surfix, 1);
