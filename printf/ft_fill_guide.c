@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 21:57:07 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/30 14:54:20 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/30 16:43:22 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int		ft_fill_width(const char *str, int i, t_guide *guide, va_list ap)
 	if (str[i] == '*')
 	{
 		guide->width = va_arg(ap, int);
+		if (guide->width < 0)
+		{
+			guide->align = 'l';
+			guide->width *= -1;
+		}
 		++i;
 	}
 	else
@@ -63,6 +68,8 @@ int		ft_fill_precision(const char *str, int i, t_guide *guide, va_list ap)
 		if (str[i] == '*')
 		{
 			guide->precision = va_arg(ap, int);
+			if (guide->precision < 0)
+				guide->precision *= -1;
 			++i;
 		}
 		else
@@ -80,8 +87,9 @@ int		ft_fill_precision(const char *str, int i, t_guide *guide, va_list ap)
 
 int		ft_fill_format(const char *str, int i, t_guide *guide)
 {
-	if (str[i] == 'c' || str[i] == 'd' || str[i] == 'i' || str[i] == 's' ||
-			str[i] == 'p' || str[i] == 'u' || str[i] == 'x' || str[i] == 'X')
+	if (str[i] == '%' || str[i] == 'c' || str[i] == 'd' ||
+			str[i] == 'i' || str[i] == 's' || str[i] == 'p' ||
+			str[i] == 'u' || str[i] == 'x' || str[i] == 'X')
 	{
 		guide->format = str[i];
 		i++;

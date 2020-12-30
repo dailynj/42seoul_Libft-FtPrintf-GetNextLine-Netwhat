@@ -6,8 +6,18 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:58:00 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/30 14:58:03 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/30 16:37:52 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "print.h"
 
+char	*ft_c_prefix(t_guide *guide)
+{
+	
+}
+
+char	*ft_c_surfix(t_guide *guide)
+{
+
+}

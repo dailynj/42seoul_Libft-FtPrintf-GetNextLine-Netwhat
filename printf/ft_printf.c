@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 13:11:10 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/30 14:51:51 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/30 16:43:36 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ int			ft_printf(const char *str, ...)
 	g_print_len = 0;
 	va_start(ap, str);
 	if (!(guide = (t_guide *)ft_calloc(1, sizeof(t_guide))))
-		return (0); // -1?
+		return (-1);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
 			i = ft_fill_guide(str, i + 1, guide, ap);
-			if (guide->format == '\0')
-				continue;
 		//	ft_print_result(guide, ap);
 		}
 		else if (++g_print_len)

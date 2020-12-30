@@ -3,6 +3,6 @@
 
 int main()
 {
-	ft_printf("a = %-10.2d");
-	printf("\nflag = %c", guide->flag);
+	printf("<%5.0c>", 'k');
+	//printf("\nflag = %c", guide->flag);
 }
