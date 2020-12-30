@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/28 21:48:36 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/30 12:34:48 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,27 @@
 
 typedef struct	s_guide
 {
-	char		*flag;
-	char 		*width;
-	char		*precision;
+	char		align;
+	char		blank;
+	int	 		width;
+	int			precision;
 	char		format;
-//	void		*data;
 }				t_guide;
 
 extern int		g_printlen;
 
 int				ft_printf(const char *s, ...);
+void			ft_init_flag(t_guide guide);
+int				ft_fill_flag(const char *str, int i, t_guide guide);
+int				ft_fill_width(const char *str,
+									int i, t_guide guide, va_list ap);
+int				ft_fill_precision(const char *str,
+									int i, t_guide guide, va_list ap);
+int				ft_fill_format(const char *str, int i, t_guide guide);
+int				ft_fill_guide(const char *str,
+									int i, t_guide guide, va_list ap);
+
+
+
 
 #endif
