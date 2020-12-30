@@ -1,4 +1,4 @@
-NAME	=	printf.a
+NAME	=	libftprintf.a
 CC		=	gcc
 CF		=	-Wall -Wextra -Werror -I ./includes
 SRC		=	ft_printf.c ft_fill_guide.c ft_print_result1.c \

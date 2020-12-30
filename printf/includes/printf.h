@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/30 15:09:18 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/30 21:28:05 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../libft/libft.h"
 # include <stdarg.h>
-
+#include <stdio.h> //remove
 typedef struct	s_guide
 {
 	char		align;
@@ -27,6 +27,7 @@ typedef struct	s_guide
 
 extern int		g_print_len;
 
+void	ft_printf_guide(t_guide *guide); //remove
 int				ft_printf(const char *s, ...);
 void			ft_init_flag(t_guide *guide);
 int				ft_fill_flag(const char *str, int i, t_guide *guide);
@@ -60,5 +61,7 @@ char			*ft_x_prefix(t_guide *guide);
 char			*ft_x_surfix(t_guide *guide);
 char			*ft_large_x_prefix(t_guide *guide);
 char			*ft_large_x_surfix(t_guide *guide);
+
+char			*ft_blank_str(int len, char blank);
 
 #endif
