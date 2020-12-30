@@ -1,7 +1,7 @@
 NAME	=	printf.a
 CC		=	gcc
 CF		=	-Wall -Wextra -Werror -I ./includes
-SRC		=	ft_printf.c\
+SRC		=	ft_printf.c ft_fill_guide.c ft_print_result.c main.c\
 
 OBJ		=	$(SRC:.c=.o)
 

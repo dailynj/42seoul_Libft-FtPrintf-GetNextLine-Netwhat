@@ -1,6 +1,8 @@
+#include "printf.h"
 #include <stdio.h>
 
 int main()
 {
-	printf("a = %-10.5s ", 123, 48);
+	ft_printf("a = %-10.2d");
+	printf("\nflag = %c", guide->flag);
 }
