@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/30 18:41:22 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/31 02:16:54 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void		ft_print_result(t_guide *guide, va_list ap)
 		tmp[0] = '%';
 		ft_putstr_fd(tmp, 1);
 	}
-	else if (guide->format == '\0')
-		return ;
 	else if (guide->format == 'c')
 		ft_c(guide, ap);
 //	else if (guide->format == 'd' || guide->format == 'i')
@@ -50,10 +48,18 @@ void		ft_c(t_guide *guide, va_list ap)
 	prefix = ft_c_prefix(guide);
 	str = va_arg(ap, int);
 	surfix = ft_c_surfix(guide);
+	
+
 	ft_putstr_fd(prefix, 1);
+	g_print_len += (int)ft_strlen(prefix);
+	
 	ft_putchar_fd(str, 1);
+	g_print_len += 1;
+	
 	ft_putstr_fd(surfix, 1);
+	g_print_len += (int)ft_strlen(surfix);
 }
+
 /*
 void		ft_di(t_guide *guide, va_list ap)
 {

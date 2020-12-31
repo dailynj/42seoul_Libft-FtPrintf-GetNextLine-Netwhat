@@ -27,13 +27,14 @@ int			ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i = ft_fill_guide(str, i + 1, guide, ap);
+			if (guide->format == '\0')
+				continue;
 			ft_print_result(guide, ap);
 		}
 		else if (++g_print_len)
-			write(1, &str[i++], 1);
+			ft_putchar_fd(str[i++], 1);
 	}
-	//remove
-	ft_printf_guide(guide); // remove
+	//ft_printf_guide(guide); // remove
 	free(guide);
 	va_end(ap);
 	return (g_print_len);
@@ -46,6 +47,7 @@ void	ft_printf_guide(t_guide *guide)
 	printf("\nwidth = %d", guide->width);
 	printf("\npreci = %d", guide->precision);
 	printf("\nforma = %c", guide->format);
+	printf("\nlen = %d", g_print_len);
 }
 
 int			ft_fill_guide(const char *str, int i, t_guide *guide, va_list ap)

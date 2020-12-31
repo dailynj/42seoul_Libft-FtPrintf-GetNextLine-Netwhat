@@ -12,8 +12,9 @@ SRC		=	ft_printf.c\
 			ft_format_1.c\
 			ft_format_2.c\
 			ft_util_printf.c\
-			main.c
+
 OBJ		=	$(SRC:.c=.o)
+
 
 all		:	$(NAME)
 
