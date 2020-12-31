@@ -19,6 +19,7 @@ int			ft_printf(const char *str, ...)
 	int		i;
 
 	i = 0;
+	g_print_len = 0;
 	va_start(ap, str);
 	if (!(guide = (t_guide *)ft_calloc(1, sizeof(t_guide))))
 		return (-1);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_c.c                                             :+:      :+:    :+:   */
+/*   ft_di.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 14:58:00 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/31 13:16:08 by najlee           ###   ########.fr       */
+/*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
+/*   Updated: 2020/12/31 14:10:10 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	*ft_c_prefix(t_guide *guide)
+char	*ft_di_prefix(t_guide *guide, int nbrlen)
 {
 	int	len;
 
@@ -24,7 +24,7 @@ char	*ft_c_prefix(t_guide *guide)
 	return (ft_blank_str(len, guide->blank));
 }
 
-char	*ft_c_surfix(t_guide *guide)
+char	*ft_di_surfix(t_guide *guide, int nbrlen)
 {
 	int len;
 	
