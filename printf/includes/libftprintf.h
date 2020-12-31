@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/31 13:18:05 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/31 17:30:55 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
 # include "../libft/libft.h"
 # include <stdarg.h>
 #include <stdio.h> //remove
+
 typedef struct	s_guide
 {
 	char		align;
@@ -49,8 +50,8 @@ void			ft_large_x(t_guide *guide, va_list ap);
 
 char			*ft_c_prefix(t_guide *guide);
 char			*ft_c_surfix(t_guide *guide);
-char			*ft_di_prefix(t_guide *guide);
-char			*ft_di_surfix(t_guide *guide);
+char			*ft_di_prefix(t_guide *guide, int nbrlen, int num);
+char			*ft_di_surfix(t_guide *guide, int nbrlen, int num);
 char			*ft_s_prefix(t_guide *guide);
 char			*ft_s_surfix(t_guide *guide);
 char			*ft_p_prefix(t_guide *guide);
@@ -63,5 +64,7 @@ char			*ft_large_x_prefix(t_guide *guide);
 char			*ft_large_x_surfix(t_guide *guide);
 
 char			*ft_blank_str(int len, char blank);
+int				ft_nbrlen(int n);
+char	*ft_strcat(char *dest, char *src);
 
 #endif

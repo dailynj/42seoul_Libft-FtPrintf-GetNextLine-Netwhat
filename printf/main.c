@@ -1,11 +1,11 @@
-#include "printf.h"
+#include "./includes/libftprintf.h"
 #include <stdio.h>
 
 int main()
 {
-	int i = ft_printf("<%5d>", 123);
+	int i = ft_printf("\n<%-4.*d>",5,  -123);
 	printf("\nft = <<<< %d >>>>", i);
 	
-	int j = printf("\n<%5d>", 123);
+	int j = printf("\n<%-4.*d>", 5,  -123);
 	printf("\nii = <<<< %d >>>>", j);
 }

@@ -6,11 +6,11 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:58:00 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/31 13:16:08 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/31 14:18:33 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libftprintf.h"
 
 char	*ft_c_prefix(t_guide *guide)
 {

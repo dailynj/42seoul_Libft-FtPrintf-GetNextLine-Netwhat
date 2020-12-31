@@ -6,11 +6,11 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/31 02:17:04 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/31 14:19:04 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libftprintf.h"
 /*
 void		ft_u(t_guide *guide, va_list ap)
 {

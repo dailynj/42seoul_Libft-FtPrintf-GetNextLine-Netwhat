@@ -6,11 +6,11 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 21:57:07 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/31 02:16:44 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/31 16:34:38 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libftprintf.h"
 
 void	ft_init_flag(t_guide *guide)
 {
@@ -69,7 +69,9 @@ int		ft_fill_precision(const char *str, int i, t_guide *guide, va_list ap)
 		{
 			guide->precision = va_arg(ap, int);
 			if (guide->precision < 0)
-				guide->precision *= -1;
+			{
+				guide->blank = ' ';
+			}
 			++i;
 		}
 		else

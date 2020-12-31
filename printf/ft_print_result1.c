@@ -6,11 +6,11 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/31 14:09:29 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/31 17:32:19 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libftprintf.h"
 
 void		ft_print_result(t_guide *guide, va_list ap)
 {
@@ -59,31 +59,38 @@ void		ft_c(t_guide *guide, va_list ap)
 
 void		ft_di(t_guide *guide, va_list ap)
 {
-	char	*prefix;
+	char	*prefix = NULL;
 	int		str;
 	int		nbrlen;
-	char	*surfix;
+	char	*surfix = NULL;
 
 	str = va_arg(ap, int);
 	nbrlen = ft_nbrlen(str);
-
-	prefix = ft_di_prefix(guide, nbrlen);
-	surfix = ft_di_surfix(guide, nbrlen);
+	
+	prefix = ft_di_prefix(guide, nbrlen, str);
+	surfix = ft_di_surfix(guide, nbrlen, str);
 	
 	ft_putstr_fd(prefix, 1);
 	g_print_len += (int)ft_strlen(prefix);
 	
+	if (str < 0){
+		g_print_len--;
+		str *= -1;
+	}
 	ft_putnbr_fd(str, 1);
 	g_print_len += nbrlen;
 	
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
+
 }
 int		ft_nbrlen(int n)
 {
 	int cnt;
 
 	cnt = 0;
+	if (n < 0)
+		cnt++;
 	while (n)
 	{
 		n /= 10;
