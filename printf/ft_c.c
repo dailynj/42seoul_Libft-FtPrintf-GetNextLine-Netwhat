@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:58:00 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/31 14:18:33 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/03 18:42:22 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_c_prefix(t_guide *guide)
 	len = guide->width;
 	if (len >= 1)
 		--len;
+	if (guide->precision < 0)
+		guide->blank = ' ';
 	return (ft_blank_str(len, guide->blank));
 }
 

@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/31 17:30:55 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/03 19:29:49 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void			ft_large_x(t_guide *guide, va_list ap);
 char			*ft_c_prefix(t_guide *guide);
 char			*ft_c_surfix(t_guide *guide);
 char			*ft_di_prefix(t_guide *guide, int nbrlen, int num);
+char			*ft_di_main_str(t_guide *guide, int nbrlen, int num,
+																char *str);
 char			*ft_di_surfix(t_guide *guide, int nbrlen, int num);
 char			*ft_s_prefix(t_guide *guide);
 char			*ft_s_surfix(t_guide *guide);
