@@ -6,7 +6,7 @@
 /*   By: jongpark <jongpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 17:59:08 by jongpark          #+#    #+#             */
-/*   Updated: 2020/12/31 17:48:30 by najlee           ###   ########.fr       */
+/*   Updated: 2020/12/31 19:16:29 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,4 @@ void	ft_put_aligned(t_info *info, char *str, char *pre)
 	if (info->align == -1 && info->empty == ' ')
 		while (info->width >= (++len) && ++g_printsize)
 			ft_putchar_fd(info->empty, 1);
-}
+
