@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/03 19:49:23 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/04 14:27:00 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ char	*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 	{
 		if (guide->align == 'r' && guide->width > nbrlen)
 		{
-			if (guide->precision >= 0)
-				return (ft_blank_str(guide->width - nbrlen, ' '));
-			else
+			if (guide->precision == -1)
 				return (ft_blank_str(guide->width - nbrlen, '0'));
+			//if (guide->precision >= 0)
+				return (ft_blank_str(guide->width - nbrlen, ' '));
+			//else
+			//	return (ft_blank_str(guide->width - nbrlen, '0'));
 		}
 		return (ft_calloc(1, 1));
 	}
@@ -48,11 +50,14 @@ char	*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 char	*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
 {	
 	(void)num;
-	if (guide->precision < nbrlen)
+	int precision;
+
+	precision = (guide->precision == -1) ? 0 : guide->precision;
+	if (precision < nbrlen)
 		return (str);
 	
 	//if (num > 0)
-		return (ft_strcat(ft_blank_str(guide->precision - nbrlen, '0'), str));
+		return (ft_strcat(ft_blank_str(precision - nbrlen, '0'), str));
 	//else
 	//	return (ft_strcat(ft_blank_str(guide->precision - nbrlen - 1, '0'),
 	//																	str));
@@ -60,6 +65,9 @@ char	*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
 
 char	*ft_di_surfix(t_guide *guide, int nbrlen, int num)
 {
+	int precision;
+
+	precision = (guide->precision == -1) ? 0 : guide->precision;
 	if (num > 0)
 	{
 		if (guide->align == 'l')
