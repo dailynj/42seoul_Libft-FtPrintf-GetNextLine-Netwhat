@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/05 17:45:51 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/05 22:43:41 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ char			*ft_di_prefix(t_guide *guide, int nbrlen, int num);
 char			*ft_di_main_str(t_guide *guide, int nbrlen, int num,
 																char *str);
 char			*ft_di_surfix(t_guide *guide, int nbrlen, int num);
+char			*ft_di_main_str_negative(int num, t_guide *guide,
+													int nbrlen, char *str);
+char *ft_di_main_str_none(int num, t_guide *guide, int nbrlen, char *str,
+																char *tmp);
 char			*ft_s_prefix(t_guide *guide);
 char			*ft_s_surfix(t_guide *guide);
 char			*ft_p_prefix(t_guide *guide);

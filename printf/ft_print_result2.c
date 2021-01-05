@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/31 14:19:04 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/05 22:41:23 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,27 @@
 void		ft_u(t_guide *guide, va_list ap)
 {
 	char				*prefix;
-	unsigned int		str;
 	char				*surfix;
+	char				*main_str;
+	unsigned int		str;
 
-	prefix = ft_u_prefix(guide);
 	str = va_arg(ap, unsigned int);
-	surfix = ft_u_surfix(guide);
+	if (str >= 0)
+		main_str = ft_u_main_str(guide, ft_nbrlen(str), str, ft_itoa(str));
+	else
+		main_str = ft_u_main_str(guide, ft_nbrlen(-1 * str), str,
+										ft_itoa(-1 * str));
+	prefix = ft_u_prefix(guide, ft_strlen(main_str), str);
+	surfix = ft_u_surfix(guide, ft_strlen(main_str), str);
+	
 	ft_putstr_fd(prefix, 1);
-	// --------------------------------------print unsigned int
+	g_print_len += (int)ft_strlen(prefix);
+	
+	ft_putnbr_fd_fd(main_str, 1);
+	g_print_len += (int)ft_strlen(main_str);
+	
 	ft_putstr_fd(surfix, 1);
+	g_print_len += (int)ft_strlen(surfix);
 }
 
 void		ft_x(t_guide *guide, va_list ap)
