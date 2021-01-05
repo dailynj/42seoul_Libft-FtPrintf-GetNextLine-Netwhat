@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/04 14:24:03 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/05 18:02:53 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void		ft_di(t_guide *guide, va_list ap)
 	int		str;
 	
 	str = va_arg(ap, int);
-	
+	if (str == -0)
+		str = 0;
 //	printf("ft_nbrlen(str) = <%d>", ft_nbrlen(str));
 //	printf("ft_itoa(str) = <%s>", ft_itoa(str));
 
@@ -86,13 +87,17 @@ void		ft_di(t_guide *guide, va_list ap)
 	
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
-
+//	printf("\nprefix = <%s>", prefix);
+//	printf("\nmaia_str = <%s>", main_str);
+//	printf("\nsurfix = <%s>", surfix);
 }
 int		ft_nbrlen(int n)
 {
 	int cnt;
 
 	cnt = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
 		cnt++;
 	while (n)
