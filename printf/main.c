@@ -3,9 +3,9 @@
 
 int main()
 {
-	int i = ft_printf("\n<%-4d>", -1);
+	int i = ft_printf("\n<%04.*d>",-4, -1);
 	printf("\nft = <<<< %d >>>>", i);
 	
-	int j = printf("\n<%-4d>", -1);
+	int j = printf("\n<%04.*d>", -4,-1);
 	printf("\nii = <<<< %d >>>>", j);
 }
