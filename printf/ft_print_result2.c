@@ -6,12 +6,12 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/05 22:41:23 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/05 23:22:19 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-/*
+
 void		ft_u(t_guide *guide, va_list ap)
 {
 	char				*prefix;
@@ -31,13 +31,13 @@ void		ft_u(t_guide *guide, va_list ap)
 	ft_putstr_fd(prefix, 1);
 	g_print_len += (int)ft_strlen(prefix);
 	
-	ft_putnbr_fd_fd(main_str, 1);
+	ft_putstr_fd(main_str, 1);
 	g_print_len += (int)ft_strlen(main_str);
 	
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
 }
-
+/*
 void		ft_x(t_guide *guide, va_list ap)
 {
 	char				*prefix;

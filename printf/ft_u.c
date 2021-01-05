@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_di.c                                            :+:      :+:    :+:   */
+/*   ft_u.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/05 23:03:24 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/05 23:17:05 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char		*ft_di_prefix(t_guide *guide, int nbrlen, int num)
+char		*ft_u_prefix(t_guide *guide, int nbrlen, int num)
 {
 	char	*tmp;
 
@@ -33,7 +33,7 @@ char		*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 	return (ft_calloc(1, 1));
 }
 
-char		*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
+char		*ft_u_main_str(t_guide *guide, int nbrlen, int num, char *str)
 {
 	char	*tmp;
 
@@ -44,7 +44,7 @@ char		*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
 												guide->precision == -1)))
 		return (ft_calloc(1, 1));
 	if (guide->precision >= 0 && guide->sign < 0)
-		str = ft_di_main_str_negative(num, guide, nbrlen, str);
+		str = ft_u_main_str_negative(num, guide, nbrlen, str);
 	else if (guide->precision >= 0 && guide->sign > 0)
 	{
 		if (guide->precision > nbrlen)
@@ -52,11 +52,11 @@ char		*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
 											- nbrlen, '0'), str));
 	}
 	else
-		str = ft_di_main_str_none(num, guide, nbrlen, str);
+		str = ft_u_main_str_none(num, guide, nbrlen, str);
 	return (str);
 }
 
-char		*ft_di_surfix(t_guide *guide, int nbrlen, int num)
+char		*ft_u_surfix(t_guide *guide, int nbrlen, int num)
 {
 	if (num < 0)
 	{
@@ -71,7 +71,7 @@ char		*ft_di_surfix(t_guide *guide, int nbrlen, int num)
 	return (ft_calloc(1, 1));
 }
 
-char		*ft_di_main_str_negative(int num, t_guide *guide,
+char		*ft_u_main_str_negative(int num, t_guide *guide,
 												int nbrlen, char *str)
 {
 	if (num >= 0)
@@ -91,7 +91,7 @@ char		*ft_di_main_str_negative(int num, t_guide *guide,
 	return (str);
 }
 
-char		*ft_di_main_str_none(int num, t_guide *guide, int nbrlen,
+char		*ft_u_main_str_none(int num, t_guide *guide, int nbrlen,
 													char *str)
 {
 	char	*tmp;
