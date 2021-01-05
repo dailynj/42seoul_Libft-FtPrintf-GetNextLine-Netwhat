@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 21:57:07 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/05 17:45:35 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/05 20:35:03 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,19 @@ int		ft_fill_width(const char *str, int i, t_guide *guide, va_list ap)
 		while (ft_isdigit(str[i]))
 		{
 			guide->width *= 10;
-			guide->width += str[i] -'0';
+			guide->width += str[i] - '0';
 			++i;
 		}
 	}
 	return (i);
 }
 
-
 int		ft_fill_precision(const char *str, int i, t_guide *guide, va_list ap)
 {
-	int precision;
-
-	precision = 0;
 	if (str[i] == '.')
 	{
 		guide->check = 1;
-		++i;
-		if (str[i] == '*')
+		if (str[++i] == '*')
 		{
 			guide->precision = va_arg(ap, int);
 			if (guide->precision < 0)
@@ -84,15 +79,12 @@ int		ft_fill_precision(const char *str, int i, t_guide *guide, va_list ap)
 		else
 		{
 			if (str[i] == '-')
-			{
-				while (ft_isdigit(str[++i]))
-					precision = (precision * 10) + (str[i] - '0');
+				i++;
+			if (str[i] == '-')
 				guide->sign = -1;
-			}
-			else
-				while (ft_isdigit(str[i]))
-					precision = (precision * 10) + (str[i++] - '0');
-			guide->precision = precision;
+			guide->precision = 0;
+			while (ft_isdigit(str[i]))
+				guide->precision = (guide->precision * 10) + (str[i++] - '0');
 		}
 	}
 	return (i);

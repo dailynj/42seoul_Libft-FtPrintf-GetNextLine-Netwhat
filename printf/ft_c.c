@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:58:00 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/03 18:42:22 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/05 20:13:27 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_c_prefix(t_guide *guide)
 char	*ft_c_surfix(t_guide *guide)
 {
 	int len;
-	
+
 	if (guide->align == 'r')
 		return (ft_calloc(1, 1));
 	len = guide->width;

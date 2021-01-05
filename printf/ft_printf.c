@@ -1,16 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/28 13:11:10 by najlee            #+#    #+#             */
-/*   Updated: 2020/12/30 17:45:19 by najlee           ###   ########.fr       */
+/*   Created: 2021/01/05 20:37:39 by najlee            #+#    #+#             */
+/*   Updated: 2021/01/05 20:38:10 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int g_print_len = 0;
+int			g_print_len = 0;
 
 int			ft_printf(const char *str, ...)
 {
@@ -41,7 +43,7 @@ int			ft_printf(const char *str, ...)
 	return (g_print_len);
 }
 
-void	ft_printf_guide(t_guide *guide)
+void		ft_printf_guide(t_guide *guide)
 {
 	printf("\nalign = %c", guide->align);
 	printf("\nblank = %c", guide->blank);
