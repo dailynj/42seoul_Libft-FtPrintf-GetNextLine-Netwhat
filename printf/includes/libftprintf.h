@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/03 19:29:49 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/04 17:45:12 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_guide
 	char		blank;
 	int			width;
 	int			precision;
+	int			sign;
 	char		format;
 }				t_guide;
 

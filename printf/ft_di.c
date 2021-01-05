@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/04 14:27:00 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/05 00:15:42 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,83 +14,26 @@
 
 char	*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 {
-	char *tmp;
-
-	if (!(tmp = ft_calloc(2, sizeof(char))))
-		return (NULL);
-	tmp[0] = '-';
-	if (num > 0)
-	{
-		if (guide->align == 'r' && guide->width > nbrlen)
-		{
-			if (guide->precision == -1)
-				return (ft_blank_str(guide->width - nbrlen, '0'));
-			//if (guide->precision >= 0)
-				return (ft_blank_str(guide->width - nbrlen, ' '));
-			//else
-			//	return (ft_blank_str(guide->width - nbrlen, '0'));
-		}
-		return (ft_calloc(1, 1));
-	}
-	else
-	{
-		if (guide->align == 'r' && guide->width > nbrlen)
-		{
-			if (guide->blank == '0')
-				return (ft_strcat(tmp, ft_blank_str(guide->width - nbrlen - 1,
-															guide->blank)));
-			else if (guide->blank == ' ')
-				return (ft_strcat(ft_blank_str(guide->width - nbrlen - 1,
-														guide->blank), tmp));
-		}
-		return (tmp);
-	}
-}
-
-char	*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
-{	
+	(void)guide;
+	(void)nbrlen;
 	(void)num;
-	int precision;
-
-	precision = (guide->precision == -1) ? 0 : guide->precision;
-	if (precision < nbrlen)
-		return (str);
-	
-	//if (num > 0)
-		return (ft_strcat(ft_blank_str(precision - nbrlen, '0'), str));
-	//else
-	//	return (ft_strcat(ft_blank_str(guide->precision - nbrlen - 1, '0'),
-	//																	str));
+	return NULL;
 }
-
+char	*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
+{
+	(void)guide;
+	(void)nbrlen;
+	(void)num;
+	(void)str;
+	return NULL;
+}
 char	*ft_di_surfix(t_guide *guide, int nbrlen, int num)
 {
-	int precision;
-
-	precision = (guide->precision == -1) ? 0 : guide->precision;
-	if (num > 0)
-	{
-		if (guide->align == 'l')
-		{
-			if (guide->width > nbrlen && guide->precision > nbrlen)
-				return (ft_blank_str(guide->width - guide->precision, ' '));
-			else if (guide->width > nbrlen && guide->precision <= nbrlen)
-				return (ft_blank_str(guide->width - nbrlen, ' '));
-		}
-	}
-	else
-	{
-		if (guide->align == 'l')
-		{
-			if (guide->width > nbrlen && guide->precision > nbrlen)
-				return (ft_blank_str(guide->width - guide->precision - 1, ' '));
-			else if (guide->width > nbrlen && guide->precision <= nbrlen)
-				return (ft_blank_str(guide->width - nbrlen - 1, ' '));
-		}
-	}
-	return (ft_calloc(1, 1));
+	(void)guide;
+	(void)nbrlen;
+	(void)num;
+	return NULL;
 }
-
 /*
 char	*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 {

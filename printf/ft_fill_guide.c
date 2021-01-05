@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 21:57:07 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/04 14:23:03 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/04 18:50:35 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_init_flag(t_guide *guide)
 	guide->blank = ' ';
 	guide->width = 0;
 	guide->precision = -1;
+	guide->sign = 1;
 	guide->format = '\0';
 }
 
@@ -71,18 +72,31 @@ int		ft_fill_precision(const char *str, int i, t_guide *guide, va_list ap)
 		if (str[i] == '*')
 		{
 			guide->precision = va_arg(ap, int);
+			if (guide->precision < 0)
+			{
+				guide->sign = -1;
+				guide->precision *= -1;
+			}
 			++i;
 		}
 		else
 		{
-			while (ft_isdigit(str[i]))
+			if (str[i] == '-')
 			{
-				precision *= 10;
-				precision += (str[i] -'0');
-				++i;
+				while (ft_isdigit(str[++i]))
+					precision = (precision * 10) + (str[i] - '0');
+				guide->sign = -1;
+				guide->precision = (precision * -1);
 			}
-			guide->precision = precision;
+			else
+			{
+				while (ft_isdigit(str[i]))
+					precision = (precision * 10) + (str[i++] - '0');
+				guide->precision = precision;
+			}
 		}
+		if (guide->precision == -1)
+			guide->precision = 0;
 	}
 	return (i);
 }
