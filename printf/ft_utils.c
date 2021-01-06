@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 20:09:43 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 16:58:39 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 18:35:20 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,21 @@ char		*ft_strcat(char *dest, char *src)
 		src++;
 	}
 	tmp[i] = '\0';
+	return (tmp);
+}
+
+char	*ft_blank_str(int len, char blank)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	if (!(tmp = ft_calloc(len + 1, sizeof(char))))
+		return (0);
+	while (i < len)
+	{
+		tmp[i] = blank;
+		i++;
+	}
 	return (tmp);
 }

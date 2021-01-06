@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 16:52:02 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 18:38:25 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ void		ft_print_result(t_guide *guide, va_list ap)
 //		ft_p(guide, ap);
 	else if (guide->format == 'u')
 		ft_u(guide, ap);
-	else if (guide->format == 'x')
+	else if (guide->format == 'x' || guide->format == 'X')
 		ft_x(guide, ap);
-//	else if (guide->format == 'X')
-//		ft_large_x(guide, ap);
 }
 
 void		ft_c(t_guide *guide, va_list ap)

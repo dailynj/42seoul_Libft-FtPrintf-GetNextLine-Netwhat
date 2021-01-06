@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 16:36:23 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 18:37:46 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,13 @@ char			*ft_u_surfix(t_guide *guide, int nbrlen);
 char			*ft_u_main_str_negative(t_guide *guide,	int nbrlen, char *str);
 char			*ft_u_main_str_none(t_guide *guide, int nbrlen, char *str);
 
-char			*ft_x_prefix(t_guide *guide);
-char			*ft_x_surfix(t_guide *guide);
+char			*ft_x_prefix(t_guide *guide, int nbrlen);
+char			*ft_x_main_str(t_guide *guide, int nbrlen, unsigned int num,
+																char *str);
+char			*ft_x_surfix(t_guide *guide, int nbrlen);
+char			*ft_x_main_str_negative(t_guide *guide,	int nbrlen, char *str);
+char			*ft_x_main_str_none(t_guide *guide, int nbrlen, char *str);
+
 
 char			*ft_large_x_prefix(t_guide *guide);
 char			*ft_large_x_surfix(t_guide *guide);
@@ -86,5 +91,7 @@ int				ft_u_nbrlen(unsigned int n);
 char			*ft_strcat(char *dest, char *src);
 
 char			*ft_make_u_to_d(unsigned int num);
+char			*ft_make_d_to_x(unsigned int num, char c);
+int				ft_hexlen(unsigned int num);
 
 #endif
