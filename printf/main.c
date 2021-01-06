@@ -3,9 +3,9 @@
 
 int main()
 {
-	int i = ft_printf("\n<%04.*d>",-4, -1);
+	int i = ft_printf("\n<%-4.4u>", 4294967295);
 	printf("\nft = <<<< %d >>>>", i);
 	
-	int j = printf("\n<%04.*d>", -4,-1);
+	int j = printf("\n<%03x>", 10);
 	printf("\nii = <<<< %d >>>>", j);
 }

@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 20:09:43 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/05 20:36:23 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 16:58:39 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,21 @@ int			ft_nbrlen(int n)
 		return (1);
 	if (n < 0)
 		cnt++;
+	while (n)
+	{
+		n /= 10;
+		cnt++;
+	}
+	return (cnt);
+}
+
+int			ft_u_nbrlen(unsigned int n)
+{
+	int		cnt;
+
+	cnt = 0;
+	if (n == 0)
+		return (1);
 	while (n)
 	{
 		n /= 10;

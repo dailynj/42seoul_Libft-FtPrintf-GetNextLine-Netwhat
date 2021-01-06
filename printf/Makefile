@@ -3,6 +3,7 @@ CC		=	gcc
 CF		=	-Wall -Wextra -Werror -I ./includes
 SRC		=	ft_printf.c ft_fill_guide.c ft_print_result1.c \
 			ft_print_result2.c ft_utils.c ft_c.c ft_di.c ft_u.c\
+			ft_make_to_d.c \
 
 OBJ		=	$(SRC:.c=.o)
 
