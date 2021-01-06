@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 18:38:25 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 18:50:35 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,8 @@
 
 void		ft_print_result(t_guide *guide, va_list ap)
 {
-	char *tmp;
-
 	if (guide->format == '%')
-	{
-		if (!(tmp = ft_calloc(2, sizeof(char))))
-			return ;
-		tmp[0] = '%';
-		ft_putstr_fd(tmp, 1);
-	}
+		ft_percent(guide);
 	else if (guide->format == 'c')
 		ft_c(guide, ap);
 	else if (guide->format == 'd' || guide->format == 'i')

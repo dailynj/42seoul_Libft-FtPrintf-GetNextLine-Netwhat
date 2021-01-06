@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 18:37:46 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 18:51:01 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,8 @@ char			*ft_x_main_str(t_guide *guide, int nbrlen, unsigned int num,
 char			*ft_x_surfix(t_guide *guide, int nbrlen);
 char			*ft_x_main_str_negative(t_guide *guide,	int nbrlen, char *str);
 char			*ft_x_main_str_none(t_guide *guide, int nbrlen, char *str);
-
-
-char			*ft_large_x_prefix(t_guide *guide);
-char			*ft_large_x_surfix(t_guide *guide);
-
+void			ft_percent(t_guide *guide);
+//--------------
 char			*ft_blank_str(int len, char blank);
 int				ft_nbrlen(int n);
 int				ft_u_nbrlen(unsigned int n);

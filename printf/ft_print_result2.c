@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 18:36:45 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 18:58:33 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,23 @@ void		ft_x(t_guide *guide, va_list ap)
 	ft_putstr_fd(main_str, 1);
 	g_print_len += (int)ft_strlen(main_str);
 	
+	ft_putstr_fd(surfix, 1);
+	g_print_len += (int)ft_strlen(surfix);
+}
+
+void		ft_percent(t_guide *guide)
+{
+	char	*prefix;
+	char	str;
+	char	*surfix;
+
+	prefix = ft_c_prefix(guide);
+	str = '%';
+	surfix = ft_c_surfix(guide);
+	ft_putstr_fd(prefix, 1);
+	g_print_len += (int)ft_strlen(prefix);
+	ft_putchar_fd(str, 1);
+	g_print_len += 1;
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
 }
