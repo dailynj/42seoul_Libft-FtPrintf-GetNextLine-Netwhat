@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 18:50:35 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 19:06:35 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void		ft_di(t_guide *guide, va_list ap)
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
 }
-
 /*
 void		ft_s(t_guide *guide, va_list ap)
 {
