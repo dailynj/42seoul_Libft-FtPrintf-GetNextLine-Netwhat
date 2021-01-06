@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 19:06:35 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/06 21:40:32 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void		ft_print_result(t_guide *guide, va_list ap)
 		ft_c(guide, ap);
 	else if (guide->format == 'd' || guide->format == 'i')
 		ft_di(guide, ap);
-//	else if (guide->format == 's')
-//		ft_s(guide, ap);
+	else if (guide->format == 's')
+		ft_s(guide, ap);
 //	else if (guide->format == 'p')
 //		ft_p(guide, ap);
 	else if (guide->format == 'u')
@@ -70,21 +70,27 @@ void		ft_di(t_guide *guide, va_list ap)
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
 }
-/*
+
 void		ft_s(t_guide *guide, va_list ap)
 {
 	char	*prefix;
 	char	*str;
 	char	*surfix;
 
-	prefix = ft_s_prefix(guide);
-	str = va_arg(ap, char *);
-	surfix = ft_s_surfix(guide);
+	str = ft_s_main_str(guide, va_arg(ap, char *));
+	prefix = ft_s_prefix(guide, ft_strlen(str));
+	surfix = ft_s_surfix(guide, ft_strlen(str));
+	
 	ft_putstr_fd(prefix, 1);
+	g_print_len += (int)ft_strlen(prefix);
+	
 	ft_putstr_fd(str, 1);
+	g_print_len += (int)ft_strlen(str);
+	
 	ft_putstr_fd(surfix, 1);
+	g_print_len += (int)ft_strlen(surfix);
 }
-
+/*
 void		ft_p(t_guide *guide, va_list ap)
 {
 	char				*prefix;
