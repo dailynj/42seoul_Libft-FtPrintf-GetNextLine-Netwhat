@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 20:37:39 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 17:13:58 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 20:01:01 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,9 @@ int			ft_printf(const char *str, ...)
 		else if (++g_print_len)
 			ft_putchar_fd(str[i++], 1);
 	}
-	//ft_printf_guide(guide); // remove
 	free(guide);
 	va_end(ap);
 	return (g_print_len);
-}
-
-void		ft_printf_guide(t_guide *guide)
-{
-	printf("\nalign = %c", guide->align);
-	printf("\nblank = %c", guide->blank);
-	printf("\nwidth = %d", guide->width);
-	printf("\npreci = %d", guide->precision);
-	printf("\nforma = <%c>", guide->format);
-	printf("\ncheck = %d", guide->check);
-	printf("\nlen = %d", g_print_len);
 }
 
 int			ft_fill_guide(const char *str, int i, t_guide *guide, va_list ap)

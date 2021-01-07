@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_c.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/30 14:58:00 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 19:18:03 by najlee           ###   ########.fr       */
+/*   Created: 2021/01/07 20:14:49 by najlee            #+#    #+#             */
+/*   Updated: 2021/01/07 20:18:56 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "includes/libftprintf.h"
 
-char	*ft_c_prefix(t_guide *guide)
+int	main()
 {
-	int	len;
-
-	if (guide->align == 'l')
-		return (ft_calloc(1, 1));
-	len = guide->width;
-	if (len >= 1)
-		--len;
-	return (ft_blank_str(len, guide->blank));
-}
-
-char	*ft_c_surfix(t_guide *guide)
-{
-	int len;
-
-	if (guide->align == 'r')
-		return (ft_calloc(1, 1));
-	len = guide->width;
-	if (len >= 1)
-		--len;
-	return (ft_blank_str(len, ' '));
+	ft_printf("%010d", 123);
+	while(1)
+	{
+	}
 }

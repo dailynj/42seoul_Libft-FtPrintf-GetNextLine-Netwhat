@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 18:29:42 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 20:05:47 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char		*ft_u_main_str(t_guide *guide, int nbrlen, unsigned int num,
 																char *str)
 {
 	char	*tmp;
+
 	if (!(tmp = ft_calloc(2, sizeof(char))))
 		return (NULL);
 	tmp[0] = '-';
@@ -54,18 +55,21 @@ char		*ft_u_surfix(t_guide *guide, int nbrlen)
 	return (ft_calloc(1, 1));
 }
 
-char		*ft_u_main_str_negative(t_guide *guide,	int nbrlen, char *str)
+char		*ft_u_main_str_negative(t_guide *guide, int nbrlen, char *str)
 {
 	if (guide->width > nbrlen && guide->blank == '0' &&
 											guide->align == 'r')
+	{
 		return (ft_strcat(ft_blank_str(guide->width
 										- nbrlen, '0'), str));
+	}
 	return (str);
 }
 
-char		*ft_u_main_str_none(t_guide *guide, int nbrlen,	char *str)
+char		*ft_u_main_str_none(t_guide *guide, int nbrlen, char *str)
 {
 	char	*tmp;
+
 	if (!(tmp = ft_calloc(2, sizeof(char))))
 		return (NULL);
 	tmp[0] = '-';

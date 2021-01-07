@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 20:09:43 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 12:37:00 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 20:06:37 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char		*ft_strcat(char *dest, char *src)
 	return (tmp);
 }
 
-char	*ft_blank_str(int len, char blank)
+char		*ft_blank_str(int len, char blank)
 {
 	char	*tmp;
 	int		i;
@@ -84,4 +84,18 @@ char	*ft_blank_str(int len, char blank)
 		i++;
 	}
 	return (tmp);
+}
+
+int			ft_cal_precision(const char *str, int i, t_guide *guide)
+{
+	int		precision;
+
+	precision = 0;
+	if (ft_isdigit(str[i]))
+	{
+		while (ft_isdigit(str[i]))
+			precision = (precision * 10) + (str[i++] - '0');
+		guide->precision = precision;
+	}
+	return (i);
 }

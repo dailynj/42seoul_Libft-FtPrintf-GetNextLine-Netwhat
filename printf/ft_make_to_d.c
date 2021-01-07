@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:03:12 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 12:38:05 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 19:30:35 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char					*ft_make_d_to_x(unsigned int num, char c)
 	}
 	if (!(str = ft_calloc(len + 1, 1)))
 		return (NULL);
-	while(len--)
+	while (len--)
 	{
 		str[len] = p[num % 16];
 		num /= 16;
@@ -93,7 +93,7 @@ char					*ft_make_d_to_p(unsigned long long num)
 	}
 	if (!(str = ft_calloc(len + 1, 1)))
 		return (NULL);
-	while(len--)
+	while (len--)
 	{
 		str[len] = p[num % 16];
 		num /= 16;

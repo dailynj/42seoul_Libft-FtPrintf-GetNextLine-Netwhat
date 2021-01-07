@@ -6,13 +6,13 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 17:54:03 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 19:59:44 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		ft_print_result(t_guide *guide, va_list ap)
+void					ft_print_result(t_guide *guide, va_list ap)
 {
 	if (guide->format == '%')
 		ft_percent(guide);
@@ -30,11 +30,11 @@ void		ft_print_result(t_guide *guide, va_list ap)
 		ft_x(guide, ap);
 }
 
-void		ft_c(t_guide *guide, va_list ap)
+void					ft_c(t_guide *guide, va_list ap)
 {
-	char	*prefix;
-	char	str;
-	char	*surfix;
+	char				*prefix;
+	char				str;
+	char				*surfix;
 
 	prefix = ft_c_prefix(guide);
 	str = va_arg(ap, int);
@@ -47,14 +47,13 @@ void		ft_c(t_guide *guide, va_list ap)
 	g_print_len += (int)ft_strlen(surfix);
 }
 
-
-void		ft_di(t_guide *guide, va_list ap)
+void					ft_di(t_guide *guide, va_list ap)
 {
-	char	*prefix;
-	char	*surfix;
-	char	*main_str;
-	int		str;
-	
+	char				*prefix;
+	char				*surfix;
+	char				*main_str;
+	int					str;
+
 	str = va_arg(ap, int);
 	if (str >= 0)
 		main_str = ft_di_main_str(guide, ft_nbrlen(str), str, ft_itoa(str));
@@ -69,67 +68,45 @@ void		ft_di(t_guide *guide, va_list ap)
 	g_print_len += (int)ft_strlen(main_str);
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
-	
-	//printf("\nprefix = <%s>[%d]", prefix, (int)ft_strlen(prefix));
-	//printf("\nmain_str = <%s>[%d]", main_str, (int)ft_strlen(main_str));
-	//printf("\nsurfix = <%s>[%d]", surfix, (int)ft_strlen(surfix));
 }
 
-void		ft_s(t_guide *guide, va_list ap)
+void					ft_s(t_guide *guide, va_list ap)
 {
-	char	*prefix;
-	char	*str;
-	char	*surfix;
+	char				*prefix;
+	char				*str;
+	char				*surfix;
 
 	str = ft_s_main_str(guide, va_arg(ap, char *));
 	prefix = ft_s_prefix(guide, ft_strlen(str));
 	surfix = ft_s_surfix(guide, ft_strlen(str));
-	
 	ft_putstr_fd(prefix, 1);
 	g_print_len += (int)ft_strlen(prefix);
-	
 	ft_putstr_fd(str, 1);
 	g_print_len += (int)ft_strlen(str);
-	
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
 }
 
-void		ft_p(t_guide *guide, va_list ap)
+void					ft_p(t_guide *guide, va_list ap)
 {
 	char				*prefix;
 	char				*surfix;
 	char				*main_str;
 	unsigned long long	str;
-	
+
 	str = va_arg(ap, unsigned long long);
-	main_str = ft_p_main_str(guide, ft_pointlen(str), str,
-								ft_make_d_to_p(str));
+	main_str = ft_p_main_str(guide, ft_pointlen(str),
+											ft_make_d_to_p(str), str);
 	prefix = ft_p_prefix(main_str, guide, ft_strlen(main_str), str);
-	
 	if (guide->precision == -1 || str == 0)
 		main_str = ft_calloc(1, 1);
-	
 	surfix = ft_p_surfix(guide, ft_strlen(prefix) + ft_strlen(main_str), str);
-	
-	if(guide->check == 1 && guide->precision == 0 && guide->width == 0
+	if (guide->check == 1 && guide->precision == 0 && guide->width == 0
 			&& guide->blank == ' ' && guide->align == 'r' && str == 0)
 	{
 		ft_putstr_fd("0x", 1);
 		g_print_len += 2;
 	}
 	else
-	{
-		ft_putstr_fd(prefix, 1);
-		g_print_len += (int)ft_strlen(prefix);
-	
-		ft_putstr_fd(main_str, 1);
-		g_print_len += (int)ft_strlen(main_str);
-	
-		ft_putstr_fd(surfix, 1);
-		g_print_len += (int)ft_strlen(surfix);
-	}
-	//printf("\nprefix = <%s>[%d]", prefix, (int)ft_strlen(prefix));
-	//printf("\nmain_str = <%s>[%d]", main_str, (int)ft_strlen(main_str));
-//	printf("\nsurfix = <%s>[%d]", surfix, (int)ft_strlen(surfix));
+		ft_print_full(prefix, main_str, surfix);
 }

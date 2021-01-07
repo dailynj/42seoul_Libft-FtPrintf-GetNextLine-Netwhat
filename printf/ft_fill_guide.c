@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 21:57:07 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 17:15:32 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 19:29:19 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ int		ft_fill_width(const char *str, int i, t_guide *guide, va_list ap)
 
 int		ft_fill_precision(const char *str, int i, t_guide *guide, va_list ap)
 {
-	int precision;
-
-	precision = 0;
 	if (str[i] == '.')
 	{
 		guide->check = 1;
@@ -83,12 +80,7 @@ int		ft_fill_precision(const char *str, int i, t_guide *guide, va_list ap)
 			i++;
 		if (str[i] == '-')
 			guide->sign = -1;
-		if (ft_isdigit(str[i]))
-		{
-			while (ft_isdigit(str[i]))
-				precision = (precision * 10) + (str[i++] - '0');
-			guide->precision = precision;	
-		}
+		i = ft_cal_precision(str, i, guide);
 	}
 	return (i);
 }

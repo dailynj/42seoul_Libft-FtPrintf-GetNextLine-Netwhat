@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:21:39 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 22:42:23 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 20:04:23 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ char		*ft_s_main_str(t_guide *guide, char *str)
 			return (NULL);
 		ft_strlcpy(str, "(null)", 7);
 	}
-	if (guide->sign > 0 && guide->precision >= 0 && guide->precision < (int)ft_strlen(str))
+	if (guide->sign > 0 && guide->precision >= 0
+						&& guide->precision < (int)ft_strlen(str))
 	{
 		if (!(tmp = ft_calloc(guide->precision + 1, 1)))
 			return (NULL);

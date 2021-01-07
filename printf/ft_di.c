@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 18:00:41 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 20:25:30 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char		*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
 		return (NULL);
 	tmp[0] = '-';
 	if (num == -2147483648)
-		return(str = ft_strdup("-2147483648"));
+		return (str = ft_strdup("-2147483648"));
 	if (num == 0 && (guide->precision == 0 || (guide->check == 1 &&
 												guide->precision == -1)))
 		return (ft_calloc(1, 1));
