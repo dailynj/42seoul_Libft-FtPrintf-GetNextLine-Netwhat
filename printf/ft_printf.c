@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 20:37:39 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 15:25:53 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 17:13:58 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		ft_printf_guide(t_guide *guide)
 	printf("\nblank = %c", guide->blank);
 	printf("\nwidth = %d", guide->width);
 	printf("\npreci = %d", guide->precision);
-	printf("\nforma = %c", guide->format);
+	printf("\nforma = <%c>", guide->format);
 	printf("\ncheck = %d", guide->check);
 	printf("\nlen = %d", g_print_len);
 }

@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 15:26:05 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 17:21:36 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,3 @@ void		ft_p(t_guide *guide, va_list ap)
 	//printf("\nmain_str = <%s>[%d]", main_str, (int)ft_strlen(main_str));
 	//printf("\nsurfix = <%s>[%d]", surfix, (int)ft_strlen(surfix));
 }
-

@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 21:57:07 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 15:28:49 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 17:15:32 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int		ft_fill_width(const char *str, int i, t_guide *guide, va_list ap)
 
 int		ft_fill_precision(const char *str, int i, t_guide *guide, va_list ap)
 {
+	int precision;
+
+	precision = 0;
 	if (str[i] == '.')
 	{
 		guide->check = 1;
@@ -74,17 +77,17 @@ int		ft_fill_precision(const char *str, int i, t_guide *guide, va_list ap)
 				guide->sign = -1;
 				guide->precision *= -1;
 			}
-			++i;
+			return (++i);
 		}
-		else
+		if (str[i] == '-')
+			i++;
+		if (str[i] == '-')
+			guide->sign = -1;
+		if (ft_isdigit(str[i]))
 		{
-			if (str[i] == '-')
-				i++;
-			if (str[i] == '-')
-				guide->sign = -1;
-			guide->precision = 0;
 			while (ft_isdigit(str[i]))
-				guide->precision = (guide->precision * 10) + (str[i++] - '0');
+				precision = (precision * 10) + (str[i++] - '0');
+			guide->precision = precision;	
 		}
 	}
 	return (i);
@@ -99,5 +102,7 @@ int		ft_fill_format(const char *str, int i, t_guide *guide)
 		guide->format = str[i];
 		i++;
 	}
+	if (guide->check == 1 && guide->format != 'p' && guide->precision == -1)
+		guide->precision = 0;
 	return (i);
 }
