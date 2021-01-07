@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 20:03:58 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 20:55:28 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void					ft_u(t_guide *guide, va_list ap)
 	g_print_len += (int)ft_strlen(main_str);
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
+	free(prefix);
+	free(main_str);
+	free(surfix);
 }
 
 void					ft_x(t_guide *guide, va_list ap)
@@ -50,6 +53,9 @@ void					ft_x(t_guide *guide, va_list ap)
 	g_print_len += (int)ft_strlen(main_str);
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
+	free(prefix);
+	free(main_str);
+	free(surfix);
 }
 
 void					ft_percent(t_guide *guide)
@@ -67,6 +73,8 @@ void					ft_percent(t_guide *guide)
 	g_print_len += 1;
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
+	free(prefix);
+	free(surfix);
 }
 
 void					ft_print_full(char *prefix, char *main_str,
@@ -78,4 +86,7 @@ void					ft_print_full(char *prefix, char *main_str,
 	g_print_len += (int)ft_strlen(main_str);
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
+	free(prefix);
+	free(main_str);
+	free(surfix);
 }

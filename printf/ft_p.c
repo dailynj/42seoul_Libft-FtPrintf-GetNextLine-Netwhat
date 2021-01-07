@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 20:12:22 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 20:30:27 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,30 @@ char		*ft_p_prefix(char *str, t_guide *guide, int nbrlen,
 	char	*tmp;
 
 	tmp = ft_strdup("0x");
+	str = ft_strdup(tmp);
 	if (guide->precision == -1)
 	{
 		if (guide->width - 2 > nbrlen)
 		{
 			if (guide->align == 'l')
 			{
-				return (ft_strcat(tmp, ft_strcat(str,
-							ft_blank_str(guide->width - 2 - nbrlen, ' '))));
+				str = ft_strcat(tmp, ft_strcat(str,
+							ft_blank_str(guide->width - 2 - nbrlen, ' ')));
 			}
-			if (guide->blank == '0')
-				return (ft_strcat(tmp, ft_strcat(
-						ft_blank_str(guide->width - 2 - nbrlen, '0'), str)));
+			else if (guide->blank == '0')
+				str = ft_strcat(tmp, ft_strcat(
+						ft_blank_str(guide->width - 2 - nbrlen, '0'), str));
 			else
-				return (ft_strcat(ft_strcat(
-					ft_blank_str(guide->width - 2 - nbrlen, ' '), tmp), str));
+				str = ft_strcat(ft_strcat(
+					ft_blank_str(guide->width - 2 - nbrlen, ' '), tmp), str);
 		}
 	}
 	if ((guide->width - 2) > nbrlen && guide->align == 'r')
-		return (ft_strcat(ft_blank_str(guide->width - 2 - nbrlen, ' '), tmp));
+		str = ft_strcat(ft_blank_str(guide->width - 2 - nbrlen, ' '), tmp);
 	if (num == 0 || guide->precision == -1)
-		return (ft_strcat(tmp, str));
-	return (tmp);
+		str = ft_strcat(tmp, str);
+	free(tmp);
+	return (str);
 }
 
 char		*ft_p_main_str(t_guide *guide, int nbrlen, char *str,

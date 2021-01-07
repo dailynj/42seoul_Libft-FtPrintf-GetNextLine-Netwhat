@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/07 20:25:30 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 21:08:46 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char		*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 {
 	char	*tmp;
+	char	*str;
 
 	if (!(tmp = ft_calloc(2, sizeof(char))))
 		return (NULL);
@@ -25,10 +26,12 @@ char		*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 	{
 		if (guide->width > nbrlen && guide->align == 'r')
 		{
-			return (ft_strcat(ft_blank_str(guide->width -
-											nbrlen - 1, ' '), tmp));
+			str = ft_strcat(ft_blank_str(guide->width -
+											nbrlen - 1, ' '), tmp);
 		}
-		return (tmp);
+		str = ft_strdup(tmp);
+		free(tmp);
+		return (str);
 	}
 	if (guide->width > nbrlen && guide->align == 'r')
 		return (ft_blank_str(guide->width - nbrlen, ' '));
@@ -37,11 +40,6 @@ char		*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 
 char		*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
 {
-	char	*tmp;
-
-	if (!(tmp = ft_calloc(2, sizeof(char))))
-		return (NULL);
-	tmp[0] = '-';
 	if (num == -2147483648)
 		return (str = ft_strdup("-2147483648"));
 	if (num == 0 && (guide->precision == 0 || (guide->check == 1 &&
@@ -114,13 +112,14 @@ char		*ft_di_main_str_none(int num, t_guide *guide, int nbrlen,
 	}
 	else if (num < 0 && guide->blank == '0' && guide->width > nbrlen
 												&& guide->align == 'r')
-		return (ft_strcat(tmp, ft_strcat(ft_blank_str(guide->width
-									- nbrlen - 1, guide->blank), str)));
+		str = ft_strcat(tmp, ft_strcat(ft_blank_str(guide->width
+									- nbrlen - 1, guide->blank), str));
 	else if (num < 0 && guide->blank == ' ' && guide->width > nbrlen
 													&& guide->align == 'r')
-		return (ft_strcat(ft_strcat(ft_blank_str(guide->width
-								- nbrlen - 1, guide->blank), tmp), str));
+		str = ft_strcat(ft_strcat(ft_blank_str(guide->width
+								- nbrlen - 1, guide->blank), tmp), str);
 	else if (num < 0)
 		str = ft_strcat(tmp, str);
+	free(tmp);
 	return (str);
 }
