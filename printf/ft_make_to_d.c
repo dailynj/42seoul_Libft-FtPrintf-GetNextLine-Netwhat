@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:03:12 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 18:37:30 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 12:38:05 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static char				*ft_handle_zero(void)
 	return (ptr);
 }
 
-char				*ft_make_u_to_d(unsigned int num)
+char					*ft_make_u_to_d(unsigned int num)
 {
-	unsigned int	temp;
-	int				len;
-	char			*str;
+	unsigned int		temp;
+	int					len;
+	char				*str;
 
 	temp = num;
 	if (temp == 0)
@@ -47,32 +47,42 @@ char				*ft_make_u_to_d(unsigned int num)
 	return (str);
 }
 
-int					ft_hexlen(unsigned int num)
+char					*ft_make_d_to_x(unsigned int num, char c)
 {
-	unsigned int	tmp;
-	unsigned int	len;
+	char				*p;
+	char				*str;
+	unsigned int		tmp;
+	unsigned int		len;
 
 	len = 0;
+	p = (c == 'x') ? "0123456789abcdef" : "0123456789ABCDEF";
 	tmp = num;
 	if (tmp == 0)
-		return (1);
+		return (ft_handle_zero());
 	while (tmp)
 	{
 		tmp /= 16;
 		len++;
 	}
-	return (len);
+	if (!(str = ft_calloc(len + 1, 1)))
+		return (NULL);
+	while(len--)
+	{
+		str[len] = p[num % 16];
+		num /= 16;
+	}
+	return (str);
 }
 
-char				*ft_make_d_to_x(unsigned int num, char c)
+char					*ft_make_d_to_p(unsigned long long num)
 {
-	char			*p;
-	char			*str;
-	unsigned int	tmp;
-	unsigned int	len;
+	char				*p;
+	char				*str;
+	unsigned long long	tmp;
+	unsigned long long	len;
 
 	len = 0;
-	p = (c == 'x') ? "0123456789abcdef" : "0123456789ABCDEF";
+	p = "0123456789abcdef";
 	tmp = num;
 	if (tmp == 0)
 		return (ft_handle_zero());

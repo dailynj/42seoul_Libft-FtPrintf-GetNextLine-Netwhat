@@ -3,9 +3,10 @@
 
 int main()
 {
-	int i = ft_printf("\n<%-15.3s>",  NULL);
+	int a = 0;
+	int i = ft_printf("\n<%-16.p>", &a);
 	printf("\nft = <<<< %d >>>>", i);
 	
-	int j = printf("\n<%-15.3s>",  NULL);
+	int j = printf("\n<%-16.p>", &a);
 	printf("\nii = <<<< %d >>>>", j);
 }

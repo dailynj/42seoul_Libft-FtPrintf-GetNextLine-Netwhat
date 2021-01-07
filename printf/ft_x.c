@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/06 18:21:37 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/07 13:35:05 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,6 @@ char		*ft_x_main_str_negative(t_guide *guide,	int nbrlen, char *str)
 
 char		*ft_x_main_str_none(t_guide *guide, int nbrlen,	char *str)
 {
-	char	*tmp;
-	if (!(tmp = ft_calloc(2, sizeof(char))))
-		return (NULL);
-	tmp[0] = '-';
 	if (guide->width > nbrlen)
 	{
 		if (guide->align == 'l')
