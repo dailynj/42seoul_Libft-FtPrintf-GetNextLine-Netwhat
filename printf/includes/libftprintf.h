@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 20:56:09 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 21:28:40 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char			*ft_di_main_str_negative(int num, t_guide *guide,
 													int nbrlen, char *str);
 char			*ft_di_main_str_none(int num, t_guide *guide,
 													int nbrlen, char *str);
-char			*ft_di_main_str_none(int num, t_guide *guide,
+char			*ft_di_main_str_none2(int num, t_guide *guide,
 													int nbrlen, char *str);
 char			*ft_s_prefix(t_guide *guide, int num);
 char			*ft_s_main_str(t_guide *guide, char *str);
@@ -95,7 +95,6 @@ char			*ft_make_d_to_x(unsigned int num, char c);
 int				ft_hexlen(unsigned int num);
 int				ft_pointlen(unsigned long long num);
 char			*ft_make_d_to_p(unsigned long long num);
-char			*ft_strdup2(const char *src);
 char			*ft_free_return(char *tmp, char *str1, char *str);
 void			ft_free_double(char *str1, char *str2);
 

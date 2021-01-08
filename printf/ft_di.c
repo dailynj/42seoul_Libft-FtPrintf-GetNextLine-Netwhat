@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 20:49:52 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 23:55:43 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 			str = ft_strcat(str1, tmp);
 			return (ft_free_return(tmp, str1, str));
 		}
-		str = ft_strdup2(tmp);
+		str = ft_strdup(tmp);
 	}
 	else if (guide->width > nbrlen && guide->align == 'r')
 		str = ft_blank_str(guide->width - nbrlen, ' ');
@@ -43,10 +43,11 @@ char		*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 
 char		*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
 {
-	char *str1;
+	char	*str1;
+	char	*str2;
 
 	if (num == -2147483648)
-		return (str = ft_strdup2("-2147483648"));
+		return (str = ft_strdup("-2147483648"));
 	if (num == 0 && (guide->precision == 0 || (guide->check == 1 &&
 												guide->precision == -1)))
 		return (str = ft_calloc(1, 1));
@@ -57,9 +58,10 @@ char		*ft_di_main_str(t_guide *guide, int nbrlen, int num, char *str)
 		if (guide->precision > nbrlen)
 		{
 			str1 = ft_blank_str(guide->precision - nbrlen, '0');
-			str = ft_strcat(str1, str);
+			str2 = ft_strcat(str1, str);
 			free(str1);
-			return (str);
+			free(str);
+			return (str2);
 		}
 	}
 	else
@@ -87,7 +89,8 @@ char		*ft_di_surfix(t_guide *guide, int nbrlen, int num)
 char		*ft_di_main_str_negative(int num, t_guide *guide,
 												int nbrlen, char *str)
 {
-	char *str1;
+	char	*str1;
+	char	*str2;
 
 	if (num >= 0)
 	{
@@ -95,21 +98,19 @@ char		*ft_di_main_str_negative(int num, t_guide *guide,
 												guide->align == 'r')
 		{
 			str1 = ft_blank_str(guide->width - nbrlen, '0');
-			str = ft_strcat(str1, str);
-			free(str1);
-			return (str);
+			str2 = ft_strcat(str1, str);
+			ft_free_double(str1, str);
+			return (str2);
 		}
+		return (str);
 	}
-	else
+	if (guide->width > nbrlen && guide->blank == '0' &&
+											guide->align == 'r')
 	{
-		if (guide->width > nbrlen && guide->blank == '0' &&
-												guide->align == 'r')
-		{
-			str1 = ft_blank_str(guide->width - nbrlen - 1, '0');
-			str = ft_strcat(str1, str);
-			free(str1);
-			return (str);
-		}
+		str1 = ft_blank_str(guide->width - nbrlen - 1, '0');
+		str2 = ft_strcat(str1, str);
+		ft_free_double(str1, str);
+		return (str2);
 	}
 	return (str);
 }
@@ -138,7 +139,8 @@ char		*ft_di_main_str_none(int num, t_guide *guide, int nbrlen,
 			free(str1);
 		}
 	}
-	str = ft_di_main_str_none(num, guide, nbrlen, str);
+	else if (num < 0)
+		str = ft_di_main_str_none2(num, guide, nbrlen, str);
 	free(tmp);
 	return (str);
 }

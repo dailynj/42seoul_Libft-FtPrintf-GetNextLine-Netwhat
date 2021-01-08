@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:21:39 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 19:37:46 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 23:48:02 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,21 @@ char		*ft_s_main_str(t_guide *guide, char *str)
 	char	*tmp;
 
 	i = 0;
-	str = ft_strdup2(str);
 	if (!str)
-	{
-		if (!(str = ft_calloc(7, 1)))
-			return (NULL);
-		ft_strlcpy(str, "(null)", 7);
-	}
+		str = ft_strdup("(null)");
+	else
+		str = ft_strdup(str);
 	if (guide->sign > 0 && guide->precision >= 0
-						&& guide->precision < (int)ft_strlen(str))
+								&& guide->precision < (int)ft_strlen(str))
 	{
 		if (!(tmp = ft_calloc(guide->precision + 1, 1)))
 			return (NULL);
-		while (i < guide->precision && i < (int)ft_strlen(str))
+		while ((i < guide->precision) && (i < (int)ft_strlen(str)))
 		{
 			tmp[i] = str[i];
 			i++;
 		}
+		free(str);
 		return (tmp);
 	}
 	return (str);

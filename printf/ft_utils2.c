@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:38:18 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 20:55:56 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 21:28:29 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,6 @@ int						ft_pointlen(unsigned long long num)
 		len++;
 	}
 	return (len);
-}
-
-char					*ft_strdup2(const char *src)
-{
-	char				*tmp;
-	int					src_len;
-	int					i;
-
-	i = 0;
-	src_len = ft_strlen(src);
-	if (!(tmp = malloc(src_len + 1)))
-		return (0);
-	while (src[i] != '\0')
-	{
-		tmp[i] = src[i];
-		i++;
-	}
-	tmp[i] = 0;
-	return (tmp);
 }
 
 char					*ft_free_return(char *tmp, char *str1, char *str)

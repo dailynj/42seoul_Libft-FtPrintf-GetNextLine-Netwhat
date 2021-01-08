@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:03:12 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 20:56:26 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 21:29:17 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char					*ft_make_d_to_p(unsigned long long num)
 	return (str);
 }
 
-char					*ft_di_main_str_none(int num,
+char					*ft_di_main_str_none2(int num,
 								t_guide *guide, int nbrlen, char *str)
 {
 	char				*tmp;
@@ -127,5 +127,6 @@ char					*ft_di_main_str_none(int num,
 	}
 	else if (num < 0)
 		str = ft_strcat(tmp, str);
+	free(tmp);
 	return (str);
 }

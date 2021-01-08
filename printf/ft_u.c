@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 18:31:09 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 22:25:12 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char		*ft_u_main_str(t_guide *guide, int nbrlen, unsigned int num,
 																char *str)
 {
 	char	*str1;
+	char	*str2;
 
 	if (num == 0 && (guide->precision == 0 || (guide->check == 1 &&
 												guide->precision == -1)))
@@ -36,9 +37,10 @@ char		*ft_u_main_str(t_guide *guide, int nbrlen, unsigned int num,
 		if (guide->precision > nbrlen)
 		{
 			str1 = ft_blank_str(guide->precision - nbrlen, '0');
-			str = ft_strcat(str1, str);
+			str2 = ft_strcat(str1, str);
+			free(str);
 			free(str1);
-			return (str);
+			return (str2);
 		}
 	}
 	else
@@ -58,14 +60,16 @@ char		*ft_u_surfix(t_guide *guide, int nbrlen)
 char		*ft_u_main_str_negative(t_guide *guide, int nbrlen, char *str)
 {
 	char	*str1;
+	char	*str2;
 
 	if (guide->width > nbrlen && guide->blank == '0' &&
 											guide->align == 'r')
 	{
 		str1 = ft_blank_str(guide->width - nbrlen, '0');
-		str = ft_strcat(str1, str);
+		str2 = ft_strcat(str1, str);
 		free(str1);
-		return (str);
+		free(str);
+		return (str2);
 	}
 	return (str);
 }
@@ -73,6 +77,7 @@ char		*ft_u_main_str_negative(t_guide *guide, int nbrlen, char *str)
 char		*ft_u_main_str_none(t_guide *guide, int nbrlen, char *str)
 {
 	char	*str1;
+	char	*str2;
 
 	if (guide->width > nbrlen)
 	{
@@ -86,9 +91,10 @@ char		*ft_u_main_str_none(t_guide *guide, int nbrlen, char *str)
 		else
 		{
 			str1 = ft_blank_str(guide->width - nbrlen, guide->blank);
-			str = ft_strcat(str1, str);
+			str2 = ft_strcat(str1, str);
 			free(str1);
-			return (str);
+			free(str);
+			return (str2);
 		}
 	}
 	return (str);
