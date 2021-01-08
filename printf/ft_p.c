@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 16:00:27 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 16:45:41 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,31 @@ char		*ft_p_prefix(char *str, t_guide *guide, int nbrlen,
 	//str = ft_strdup(tmp);
 	if (guide->precision == -1)
 	{
-		ft_p_precision_none(guide, nbrlen, str, tmp);
+		if (guide->width - 2 > nbrlen)
+		{
+			if (guide->align == 'l')
+			{
+				str = ft_strcat(tmp, ft_strcat(str,
+							ft_blank_str(guide->width - 2 - nbrlen, ' ')));
+				free(tmp);
+				return (str);
+			}
+			if (guide->blank == '0')
+			{
+				str = ft_strcat(tmp, ft_strcat(
+						ft_blank_str(guide->width - 2 - nbrlen, '0'), str));
+				free(tmp);
+				return (str);
+			}
+			else
+			{
+				str = ft_strcat(ft_strcat(
+					ft_blank_str(guide->width - 2 - nbrlen, ' '), tmp), str);
+				free(tmp);
+				return (str);
+			}
+		}
+		//str = ft_p_precision_none(guide, nbrlen, str, tmp);
 	}
 	if ((guide->width - 2) > nbrlen && guide->align == 'r')
 	{
@@ -30,9 +54,12 @@ char		*ft_p_prefix(char *str, t_guide *guide, int nbrlen,
 		return (str);
 	}
 	if (num == 0 || guide->precision == -1)
+	{
 		str = ft_strcat(tmp, str);
-	free(tmp);
-	return (str);
+		free(tmp);
+		return (str);	
+	}
+	return (tmp);
 }
 
 char		*ft_p_main_str(t_guide *guide, int nbrlen, char *str,
@@ -75,6 +102,7 @@ char		*ft_p_main_str_negative(t_guide *guide, int nbrlen, char *str)
 	return (str);
 }
 
+/*
 char		*ft_p_precision_none(t_guide *guide,
 							int nbrlen, char *str, char *tmp)
 {
@@ -84,16 +112,20 @@ char		*ft_p_precision_none(t_guide *guide,
 		{
 			str = ft_strcat(tmp, ft_strcat(str,
 						ft_blank_str(guide->width - 2 - nbrlen, ' ')));
+			return (str);
 		}
-		else if (guide->blank == '0')
+		if (guide->blank == '0')
 		{
 			str = ft_strcat(tmp, ft_strcat(
 					ft_blank_str(guide->width - 2 - nbrlen, '0'), str));
+			return (str);
 		}
 		else
+		{
 			str = ft_strcat(ft_strcat(
 				ft_blank_str(guide->width - 2 - nbrlen, ' '), tmp), str);
+			return (str);
+		}
 	}
-	free(tmp);
 	return (str);
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 20:09:43 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 15:41:42 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 16:10:07 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ int			ft_u_nbrlen(unsigned int n)
 char		*ft_strcat(char *dest, char *src)
 {
 	int		i;
+	int		j;
 	int		len;
 	char	*tmp;
 
 	i = 0;
+	j = 0;
 	len = ft_strlen(dest) + ft_strlen(src);
 	if (!(tmp = malloc(len + 1)))
 		return (NULL);
@@ -60,15 +62,13 @@ char		*ft_strcat(char *dest, char *src)
 		i++;
 		dest++;
 	}
-	while (*src)
+	while (src[j])
 	{
-		tmp[i] = *src;
+		tmp[i] = src[j];
 		i++;
-		src++;
+		j++;
 	}
 	tmp[i] = '\0';
-	//if (!src)
-	//	free(src);
 	return (tmp);
 }
 
