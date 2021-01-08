@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 21:21:39 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 15:19:47 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 19:37:46 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char		*ft_s_main_str(t_guide *guide, char *str)
 	char	*tmp;
 
 	i = 0;
+	str = ft_strdup2(str);
 	if (!str)
 	{
 		if (!(str = ft_calloc(7, 1)))

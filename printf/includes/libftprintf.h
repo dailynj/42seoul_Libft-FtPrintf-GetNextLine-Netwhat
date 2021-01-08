@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 15:58:51 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 19:35:50 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ char			*ft_make_d_to_x(unsigned int num, char c);
 int				ft_hexlen(unsigned int num);
 int				ft_pointlen(unsigned long long num);
 char			*ft_make_d_to_p(unsigned long long num);
+char			*ft_strdup2(const char *src);
 
 #endif
