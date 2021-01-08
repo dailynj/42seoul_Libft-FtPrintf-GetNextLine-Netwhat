@@ -6,32 +6,34 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:58:00 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 11:58:35 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 15:39:32 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_c_prefix(t_guide *guide)
+char		*ft_c_prefix(t_guide *guide)
 {
-	int	len;
+	int		len;
+	char	*str;
 
 	if (guide->align == 'l')
-		return (ft_calloc(1, 1));
+		return (str = ft_calloc(1, 1));
 	len = guide->width;
 	if (len >= 1)
 		--len;
-	return (ft_blank_str(len, guide->blank));
+	return (str = ft_blank_str(len, guide->blank));
 }
 
-char	*ft_c_surfix(t_guide *guide)
+char		*ft_c_surfix(t_guide *guide)
 {
-	int len;
+	int		len;
+	char	*str;
 
 	if (guide->align == 'r')
-		return (ft_calloc(1, 1));
+		return (str = ft_calloc(1, 1));
 	len = guide->width;
 	if (len >= 1)
 		--len;
-	return (ft_blank_str(len, ' '));
+	return (str = ft_blank_str(len, ' '));
 }

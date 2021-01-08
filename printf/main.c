@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 20:14:49 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 14:58:42 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 15:41:22 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	main()
 {
 	int a = 100;
 	ft_printf("1. %010d\n", 123);
-	ft_printf("2. %010u\n", 123);
-	ft_printf("3. %010i\n", 123);
-	ft_printf("4. %0p\n", &a);
-	ft_printf("5. %010s\n", "123");
-	ft_printf("6. %010x\n", 123);
-	ft_printf("7. %010X\n", 123);
-	ft_printf("8. %010c\n", 'a');
+	//ft_printf("2. %010u\n", 123);
+	//ft_printf("3. %010i\n", 123);
+	//ft_printf("4. %0p\n", &a);
+	//ft_printf("5. %010s\n", "123");
+	//ft_printf("6. %010x\n", 123);
+	//ft_printf("7. %010X\n", 123);
+	//ft_printf("8. %010c\n", 'a');
 	while(1)
 	{
 	}

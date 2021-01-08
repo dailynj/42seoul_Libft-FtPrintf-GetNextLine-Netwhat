@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:35:33 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 15:03:53 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 15:52:44 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void					ft_c(t_guide *guide, va_list ap)
 	g_print_len += 1;
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
+	free(prefix);
+	free(surfix);
 }
 
 void					ft_di(t_guide *guide, va_list ap)
@@ -68,9 +70,9 @@ void					ft_di(t_guide *guide, va_list ap)
 	g_print_len += (int)ft_strlen(main_str);
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
-	//free(prefix);
-	//free(main_str);
-	//free(surfix);
+	free(prefix);
+	free(main_str);
+	free(surfix);
 }
 
 void					ft_s(t_guide *guide, va_list ap)
@@ -88,9 +90,8 @@ void					ft_s(t_guide *guide, va_list ap)
 	g_print_len += (int)ft_strlen(str);
 	ft_putstr_fd(surfix, 1);
 	g_print_len += (int)ft_strlen(surfix);
-	//free(prefix);
-	//free(str);
-	//free(surfix);
+	free(prefix);
+	free(surfix);
 }
 
 void					ft_p(t_guide *guide, va_list ap)
@@ -101,24 +102,23 @@ void					ft_p(t_guide *guide, va_list ap)
 	unsigned long long	str;
 
 	str = va_arg(ap, unsigned long long);
-	main_str = ft_p_main_str(guide, ft_pointlen(str),
-											ft_make_d_to_p(str), str);
-	prefix = ft_p_prefix(main_str, guide, ft_strlen(main_str), str);
-	if (guide->precision == -1 || str == 0)
-	{
-		free(main_str);
-		main_str = ft_calloc(1, 1);
-	}
-	surfix = ft_p_surfix(guide, ft_strlen(prefix) + ft_strlen(main_str), str);
 	if (guide->check == 1 && guide->precision == 0 && guide->width == 0
 			&& guide->blank == ' ' && guide->align == 'r' && str == 0)
 	{
 		ft_putstr_fd("0x", 1);
 		g_print_len += 2;
-		free(prefix);
-		free(main_str);
-		free(surfix);
 	}
 	else
+	{
+		main_str = ft_p_main_str(guide, ft_pointlen(str),
+											ft_make_d_to_p(str), str);
+		prefix = ft_p_prefix(main_str, guide, ft_strlen(main_str), str);
+		if (guide->precision == -1 || str == 0)
+			free(main_str);
+		if (guide->precision == -1 || str == 0)
+			main_str = ft_calloc(1, 1);
+		surfix = ft_p_surfix(guide, ft_strlen(prefix)
+									+ ft_strlen(main_str), str);
 		ft_print_full(prefix, main_str, surfix);
+	}
 }

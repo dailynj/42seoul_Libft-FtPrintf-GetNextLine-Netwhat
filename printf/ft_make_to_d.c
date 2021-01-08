@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:03:12 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 13:13:18 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 15:36:18 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char					*ft_make_u_to_d(unsigned int num)
 
 	temp = num;
 	if (temp == 0)
-		return (ft_handle_zero());
+		return (str = ft_handle_zero());
 	len = 0;
 	while (temp)
 	{
@@ -58,7 +58,7 @@ char					*ft_make_d_to_x(unsigned int num, char c)
 	p = (c == 'x') ? "0123456789abcdef" : "0123456789ABCDEF";
 	tmp = num;
 	if (tmp == 0)
-		return (ft_handle_zero());
+		return (str = ft_handle_zero());
 	while (tmp)
 	{
 		tmp /= 16;
@@ -85,7 +85,7 @@ char					*ft_make_d_to_p(unsigned long long num)
 	p = "0123456789abcdef";
 	tmp = num;
 	if (tmp == 0)
-		return (ft_handle_zero());
+		return (str = ft_handle_zero());
 	while (tmp)
 	{
 		tmp /= 16;

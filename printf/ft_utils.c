@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 20:09:43 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 13:07:49 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 15:41:42 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char		*ft_strcat(char *dest, char *src)
 	}
 	tmp[i] = '\0';
 	//if (!src)
-//		free(src);
+	//	free(src);
 	return (tmp);
 }
 
