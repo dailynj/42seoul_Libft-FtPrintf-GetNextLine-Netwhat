@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:16:11 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 19:35:50 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 20:56:09 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libft/libft.h"
 # include <stdarg.h>
-# include <stdio.h>  //remove
 
 typedef struct	s_guide
 {
@@ -48,7 +47,6 @@ void			ft_p(t_guide *guide, va_list ap);
 void			ft_u(t_guide *guide, va_list ap);
 void			ft_x(t_guide *guide, va_list ap);
 void			ft_large_x(t_guide *guide, va_list ap);
-
 char			*ft_c_prefix(t_guide *guide);
 char			*ft_c_surfix(t_guide *guide);
 char			*ft_di_prefix(t_guide *guide, int nbrlen, int num);
@@ -59,11 +57,11 @@ char			*ft_di_main_str_negative(int num, t_guide *guide,
 													int nbrlen, char *str);
 char			*ft_di_main_str_none(int num, t_guide *guide,
 													int nbrlen, char *str);
-
+char			*ft_di_main_str_none(int num, t_guide *guide,
+													int nbrlen, char *str);
 char			*ft_s_prefix(t_guide *guide, int num);
 char			*ft_s_main_str(t_guide *guide, char *str);
 char			*ft_s_surfix(t_guide *guide, int num);
-
 char			*ft_p_prefix(char *str, t_guide *guide, int nbrlen,
 													unsigned long long num);
 char			*ft_p_main_str(t_guide *guide, int nbrlen, char *str,
@@ -73,14 +71,12 @@ char			*ft_p_surfix(t_guide *guide, int nbrlen,
 char			*ft_p_main_str_negative(t_guide *guide, int nbrlen, char *str);
 char			*ft_p_precision_none(t_guide *guide, int nbrlen, char *str,
 																	char *tmp);
-
 char			*ft_u_prefix(t_guide *guide, int nbrlen);
 char			*ft_u_main_str(t_guide *guide, int nbrlen, unsigned int num,
 																char *str);
 char			*ft_u_surfix(t_guide *guide, int nbrlen);
 char			*ft_u_main_str_negative(t_guide *guide, int nbrlen, char *str);
 char			*ft_u_main_str_none(t_guide *guide, int nbrlen, char *str);
-
 char			*ft_x_prefix(t_guide *guide, int nbrlen);
 char			*ft_x_main_str(t_guide *guide, int nbrlen, unsigned int num,
 																char *str);
@@ -89,18 +85,18 @@ char			*ft_x_main_str_negative(t_guide *guide, int nbrlen, char *str);
 char			*ft_x_main_str_none(t_guide *guide, int nbrlen, char *str);
 void			ft_percent(t_guide *guide);
 void			ft_print_full(char *prefix, char *main_str, char *surfix);
-
 char			*ft_blank_str(int len, char blank);
 int				ft_nbrlen(int n);
 int				ft_u_nbrlen(unsigned int n);
 char			*ft_strcat(char *dest, char *src);
 int				ft_cal_precision(const char *str, int i, t_guide *guide);
-
 char			*ft_make_u_to_d(unsigned int num);
 char			*ft_make_d_to_x(unsigned int num, char c);
 int				ft_hexlen(unsigned int num);
 int				ft_pointlen(unsigned long long num);
 char			*ft_make_d_to_p(unsigned long long num);
 char			*ft_strdup2(const char *src);
+char			*ft_free_return(char *tmp, char *str1, char *str);
+void			ft_free_double(char *str1, char *str2);
 
 #endif

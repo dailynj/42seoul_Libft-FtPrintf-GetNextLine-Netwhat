@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 19:36:51 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 20:49:52 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ char		*ft_di_prefix(t_guide *guide, int nbrlen, int num)
 		{
 			str1 = ft_blank_str(guide->width - nbrlen - 1, ' ');
 			str = ft_strcat(str1, tmp);
-			free(tmp);
-			free(str1);
-			return (str);
+			return (ft_free_return(tmp, str1, str));
 		}
 		str = ft_strdup2(tmp);
 	}
@@ -99,7 +97,7 @@ char		*ft_di_main_str_negative(int num, t_guide *guide,
 			str1 = ft_blank_str(guide->width - nbrlen, '0');
 			str = ft_strcat(str1, str);
 			free(str1);
-			return (str);	
+			return (str);
 		}
 	}
 	else
@@ -110,7 +108,7 @@ char		*ft_di_main_str_negative(int num, t_guide *guide,
 			str1 = ft_blank_str(guide->width - nbrlen - 1, '0');
 			str = ft_strcat(str1, str);
 			free(str1);
-			return (str);	
+			return (str);
 		}
 	}
 	return (str);
@@ -121,7 +119,6 @@ char		*ft_di_main_str_none(int num, t_guide *guide, int nbrlen,
 {
 	char	*tmp;
 	char	*str1;
-	char	*str2;
 
 	if (!(tmp = ft_calloc(2, sizeof(char))))
 		return (NULL);
@@ -141,26 +138,7 @@ char		*ft_di_main_str_none(int num, t_guide *guide, int nbrlen,
 			free(str1);
 		}
 	}
-	else if (num < 0 && guide->blank == '0' && guide->width > nbrlen
-												&& guide->align == 'r')
-	{
-		str1 = ft_blank_str(guide->width - nbrlen - 1, guide->blank);
-		str2 = ft_strcat(str1, str);
-		str = ft_strcat(tmp, str2);
-		free(str1);
-		free(str2);
-	}
-	else if (num < 0 && guide->blank == ' ' && guide->width > nbrlen
-													&& guide->align == 'r')
-	{
-		str1 = ft_blank_str(guide->width - nbrlen - 1, guide->blank);
-		str2 = ft_strcat(str1, tmp);
-		str = ft_strcat(str2, str);
-		free(str1);
-		free(str2);
-	}
-	else if (num < 0)
-		str = ft_strcat(tmp, str);
+	str = ft_di_main_str_none(num, guide, nbrlen, str);
 	free(tmp);
 	return (str);
 }

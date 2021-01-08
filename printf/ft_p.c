@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 19:37:04 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 20:36:05 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,14 @@ char		*ft_p_precision_none(t_guide *guide,
 		str1 = ft_blank_str(guide->width - 2 - nbrlen, '0');
 		str2 = ft_strcat(str1, str);
 		str = ft_strcat(tmp, str2);
-		free(str1);
-		free(str2);
-		return (str);
 	}
 	else
 	{
 		str1 = ft_blank_str(guide->width - 2 - nbrlen, ' ');
 		str2 = ft_strcat(str1, tmp);
 		str = ft_strcat(str2, str);
-		free(str1);
-		free(str2);
-		return (str);
 	}
+	free(str1);
+	free(str2);
+	return (str);
 }

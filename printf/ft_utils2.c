@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:38:18 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 19:40:42 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 20:55:56 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ int						ft_pointlen(unsigned long long num)
 	return (len);
 }
 
-char		*ft_strdup2(const char *src)
+char					*ft_strdup2(const char *src)
 {
-	char	*tmp;
-	int		src_len;
-	int		i;
+	char				*tmp;
+	int					src_len;
+	int					i;
 
 	i = 0;
 	src_len = ft_strlen(src);
@@ -62,6 +62,18 @@ char		*ft_strdup2(const char *src)
 		i++;
 	}
 	tmp[i] = 0;
-	//free((char *)src);
 	return (tmp);
+}
+
+char					*ft_free_return(char *tmp, char *str1, char *str)
+{
+	free(tmp);
+	free(str1);
+	return (str);
+}
+
+void					ft_free_double(char *str1, char *str2)
+{
+	free(str1);
+	free(str2);
 }

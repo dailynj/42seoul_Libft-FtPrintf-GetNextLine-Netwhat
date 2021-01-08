@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:03:12 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 19:10:43 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 20:56:26 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,34 @@ char					*ft_make_d_to_p(unsigned long long num)
 		str[len] = p[num % 16];
 		num /= 16;
 	}
+	return (str);
+}
+
+char					*ft_di_main_str_none(int num,
+								t_guide *guide, int nbrlen, char *str)
+{
+	char				*tmp;
+	char				*str1;
+	char				*str2;
+
+	tmp = ft_strdup("-");
+	if (num < 0 && guide->blank == '0' && guide->width > nbrlen
+												&& guide->align == 'r')
+	{
+		str1 = ft_blank_str(guide->width - nbrlen - 1, guide->blank);
+		str2 = ft_strcat(str1, str);
+		str = ft_strcat(tmp, str2);
+		ft_free_double(str1, str2);
+	}
+	else if (num < 0 && guide->blank == ' ' && guide->width > nbrlen
+													&& guide->align == 'r')
+	{
+		str1 = ft_blank_str(guide->width - nbrlen - 1, guide->blank);
+		str2 = ft_strcat(str1, tmp);
+		str = ft_strcat(str2, str);
+		ft_free_double(str1, str2);
+	}
+	else if (num < 0)
+		str = ft_strcat(tmp, str);
 	return (str);
 }

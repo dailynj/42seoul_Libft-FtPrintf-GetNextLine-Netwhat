@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:15:46 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/08 20:32:13 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/08 20:37:39 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char		*ft_x_main_str_none(t_guide *guide, int nbrlen, char *str)
 			str1 = ft_blank_str(guide->width - nbrlen, guide->blank);
 			str = ft_strcat(str1, str);
 			free(str1);
-			return (str);	
+			return (str);
 		}
 	}
 	return (str);
