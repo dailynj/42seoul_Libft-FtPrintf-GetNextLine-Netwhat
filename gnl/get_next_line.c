@@ -6,7 +6,7 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:22:54 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/13 15:40:19 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/13 16:00:55 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int				ft_final(char **backup, char **line, int read_len)
 void			ft_fill_line(char **backup, char **line, int nl_index)
 {
 	int			i;
+	char		*tmp;
 
 	if (!((*line) = (char *)malloc(nl_index + 1)))
 		return ;
@@ -74,5 +75,9 @@ void			ft_fill_line(char **backup, char **line, int nl_index)
 		*backup = NULL;
 		return ;
 	}
-	(*backup) = ft_strdup(&(*backup)[nl_index + 1]);
+	//(*backup) = ft_strdup(&(*backup)[nl_index + 1]);
+	tmp = ft_strdup(&(*backup)[nl_index + 1]);
+	free(*backup);
+	*backup = ft_strdup(tmp);
+	free(tmp);
 }
