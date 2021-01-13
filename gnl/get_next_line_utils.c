@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 12:25:51 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/13 15:40:07 by najlee           ###   ########.fr       */
+/*   Created: 2021/01/13 16:12:51 by najlee            #+#    #+#             */
+/*   Updated: 2021/01/13 16:34:23 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			ft_strlen(char *str)
+ssize_t	ft_strlen(char *str)
 {
-	int		i;
+	ssize_t	i;
 
 	i = 0;
 	while (str[i])
@@ -22,55 +22,54 @@ int			ft_strlen(char *str)
 	return (i);
 }
 
-int			ft_nl_index(char *str)
+ssize_t	ft_nl_index(char *backup)
 {
-	int		i;
+	ssize_t	i;
 
 	i = 0;
-	while (str[i])
+	while (backup[i])
 	{
-		if (str[i] == '\n')
+		if (backup[i] == '\n')
 			return (i);
 		i++;
 	}
 	return (-1);
 }
 
-char		*ft_strdup(char *str)
+char	*ft_strdup(char *s1)
 {
-	char	*tmp;
-	int		i;
+	char	*s2;
+	ssize_t	i;
 
-	i = 0;
-	if (!(tmp = (char *)malloc(ft_strlen(str) + 1)))
+	if (!(s2 = (char *)malloc(ft_strlen(s1) + 1)))
 		return (NULL);
-	while (i < ft_strlen(str))
+	i = 0;
+	while (i < ft_strlen(s1))
 	{
-		tmp[i] = str[i];
+		s2[i] = s1[i];
 		i++;
 	}
-	tmp[i] = '\0';
-	return (tmp);
+	s2[i] = '\0';
+	return (s2);
 }
 
-char		*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*tmp;
-	int		i;
-	int		j;
+	char	*s3;
+	ssize_t	i;
+	ssize_t	j;
 
-	i = 0;
-	j = 0;
-	if (!s1)
+	if (s1 == NULL)
 		return (ft_strdup(s2));
-	if (!(tmp = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+	if (!(s3 = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
 		return (NULL);
-	while (s1[j])
-		tmp[i++] = s1[j++];
-	j = 0;
-	while (s2[j])
-		tmp[i++] = s2[j++];
-	tmp[i] = '\0';
+	i = -1;
+	while (++i < ft_strlen(s1))
+		s3[i] = s1[i];
 	free(s1);
-	return (tmp);
+	j = -1;
+	while (++j < ft_strlen(s2))
+		s3[i + j] = s2[j];
+	s3[i + j] = '\0';
+	return (s3);
 }
