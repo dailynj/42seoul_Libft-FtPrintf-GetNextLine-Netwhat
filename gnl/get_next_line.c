@@ -6,18 +6,18 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:22:54 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/13 15:12:51 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/13 15:40:19 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	*get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	static char	*backup[OPEN_MAX];
 	char		buf[BUFFER_SIZE + 1];
-	int		read_len;
-	int		nl_index;
+	int			read_len;
+	int			nl_index;
 
 	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
 		return (-1);
@@ -27,20 +27,22 @@ int	*get_next_line(int fd, char **line)
 		backup[fd] = ft_strjoin(backup[fd], buf);
 		if ((nl_index = ft_nl_index(backup[fd])) >= 0)
 		{
-			ft_fill_line(&backup[fd], line, nl_line);
+			ft_fill_line(&backup[fd], line, nl_index);
 			return (1);
 		}
 	}
 	return (ft_final(&backup[fd], line, read_len));
 }
 
-int			ft_final(char **backup, char **line, int read_len)
+int				ft_final(char **backup, char **line, int read_len)
 {
+	int			nl_index;
+
 	if (read_len < 0)
 		return (-1);
 	if (*backup && (nl_index = ft_nl_index(*backup)) >= 0)
 	{
-		ft_fill_line(backup, line, nl_line);
+		ft_fill_line(backup, line, nl_index);
 		return (1);
 	}
 	else if (*backup)
@@ -53,12 +55,12 @@ int			ft_final(char **backup, char **line, int read_len)
 	return (0);
 }
 
-void			ft_fill_line(char **backup, char **line, int nl_line)
+void			ft_fill_line(char **backup, char **line, int nl_index)
 {
-	int		i;
+	int			i;
 
 	if (!((*line) = (char *)malloc(nl_index + 1)))
-		return (NULL);
+		return ;
 	i = 0;
 	while (i < nl_index)
 	{

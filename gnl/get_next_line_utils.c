@@ -6,15 +6,15 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:25:51 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/13 14:56:49 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/13 15:40:07 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		ft_strlen(char *str)
+int			ft_strlen(char *str)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -22,20 +22,24 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-int		ft_nl_index(char *str)
+int			ft_nl_index(char *str)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	while (str[i] == '\n')
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (i);
 		i++;
-	return (i);
+	}
+	return (-1);
 }
 
 char		*ft_strdup(char *str)
 {
 	char	*tmp;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!(tmp = (char *)malloc(ft_strlen(str) + 1)))
@@ -46,24 +50,26 @@ char		*ft_strdup(char *str)
 		i++;
 	}
 	tmp[i] = '\0';
-	free(str);
 	return (tmp);
 }
 
 char		*ft_strjoin(char *s1, char *s2)
 {
 	char	*tmp;
-	int	i;
+	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	if (!s1)
 		return (ft_strdup(s2));
 	if (!(tmp = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
 		return (NULL);
-	while (*s1)
-		tmp[i++] = *(s1++);
-	while (*s2)
-		tmp[i++] = *(s2++);
+	while (s1[j])
+		tmp[i++] = s1[j++];
+	j = 0;
+	while (s2[j])
+		tmp[i++] = s2[j++];
 	tmp[i] = '\0';
 	free(s1);
 	return (tmp);
