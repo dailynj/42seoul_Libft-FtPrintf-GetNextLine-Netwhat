@@ -5,25 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 12:23:56 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/13 15:41:54 by najlee           ###   ########.fr       */
+/*   Created: 2021/01/13 20:27:43 by najlee            #+#    #+#             */
+/*   Updated: 2021/01/13 20:33:31 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-# include <stdlib.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 # define OPEN_MAX 256
 
+ssize_t	ft_nl_index(char *backup);
+void	ft_fill_line(char **backup, char **line, ssize_t nl_index);
+int		ft_final(char **backup, char **line, ssize_t read_len);
 int		get_next_line(int fd, char **line);
-int		ft_final(char **backup, char **line, int read_len);
-void	ft_fill_line(char **backup, char **line, int nl_index);
-int		ft_strlen(char *str);
-int		ft_nl_index(char *str);
-char	*ft_strdup(char *str);
+ssize_t	ft_strlen(char *s);
+char	*ft_strdup(char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 
 #endif

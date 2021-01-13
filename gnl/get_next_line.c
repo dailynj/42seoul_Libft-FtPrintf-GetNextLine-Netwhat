@@ -5,38 +5,56 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 12:22:54 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/13 16:00:55 by najlee           ###   ########.fr       */
+/*   Created: 2021/01/13 19:57:16 by najlee            #+#    #+#             */
+/*   Updated: 2021/01/13 20:29:09 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int				get_next_line(int fd, char **line)
+ssize_t	ft_nl_index(char *backup)
 {
-	static char	*backup[OPEN_MAX];
-	char		buf[BUFFER_SIZE + 1];
-	int			read_len;
-	int			nl_index;
+	ssize_t	i;
 
-	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
-		return (-1);
-	while ((read_len = read(fd, buf, BUFFER_SIZE)) > 0)
+	i = 0;
+	while (backup[i])
 	{
-		buf[read_len] = '\0';
-		backup[fd] = ft_strjoin(backup[fd], buf);
-		if ((nl_index = ft_nl_index(backup[fd])) >= 0)
-		{
-			ft_fill_line(&backup[fd], line, nl_index);
-			return (1);
-		}
+		if (backup[i] == '\n')
+			return (i);
+		i++;
 	}
-	return (ft_final(&backup[fd], line, read_len));
+	return (-1);
 }
 
-int				ft_final(char **backup, char **line, int read_len)
+void	ft_fill_line(char **backup, char **line, ssize_t nl_index)
 {
-	int			nl_index;
+	char	*temp;
+	ssize_t	i;
+
+	if (!(*line = (char *)malloc(sizeof(char) * (nl_index + 1))))
+		return ;
+	i = 0;
+	while (i < nl_index)
+	{
+		(*line)[i] = (*backup)[i];
+		i++;
+	}
+	(*line)[i] = '\0';
+	if (ft_strlen(&(*backup)[nl_index + 1]) == 0)
+	{
+		free(*backup);
+		*backup = NULL;
+		return ;
+	}
+	temp = ft_strdup(&(*backup)[nl_index + 1]);
+	free(*backup);
+	*backup = ft_strdup(temp);
+	free(temp);
+}
+
+int		ft_final(char **backup, char **line, ssize_t read_len)
+{
+	ssize_t	nl_index;
 
 	if (read_len < 0)
 		return (-1);
@@ -55,29 +73,24 @@ int				ft_final(char **backup, char **line, int read_len)
 	return (0);
 }
 
-void			ft_fill_line(char **backup, char **line, int nl_index)
+int		get_next_line(int fd, char **line)
 {
-	int			i;
-	char		*tmp;
+	char		buf[BUFFER_SIZE + 1];
+	static char	*backup[OPEN_MAX];
+	ssize_t		read_len;
+	ssize_t		nl_index;
 
-	if (!((*line) = (char *)malloc(nl_index + 1)))
-		return ;
-	i = 0;
-	while (i < nl_index)
+	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
+		return (-1);
+	while ((read_len = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
-		(*line)[i] = (*backup)[i];
-		i++;
+		buf[read_len] = '\0';
+		backup[fd] = ft_strjoin(backup[fd], buf);
+		if ((nl_index = ft_nl_index(backup[fd])) >= 0)
+		{
+			ft_fill_line(&backup[fd], line, nl_index);
+			return (1);
+		}
 	}
-	(*line)[i] = '\0';
-	if (!ft_strlen(&(*backup)[nl_index + 1]))
-	{
-		free(*backup);
-		*backup = NULL;
-		return ;
-	}
-	//(*backup) = ft_strdup(&(*backup)[nl_index + 1]);
-	tmp = ft_strdup(&(*backup)[nl_index + 1]);
-	free(*backup);
-	*backup = ft_strdup(tmp);
-	free(tmp);
+	return (ft_final(&backup[fd], line, read_len));
 }
