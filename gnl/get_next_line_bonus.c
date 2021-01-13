@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 19:57:16 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/13 20:33:46 by najlee           ###   ########.fr       */
+/*   Created: 2021/01/13 20:53:34 by najlee            #+#    #+#             */
+/*   Updated: 2021/01/13 20:57:56 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,27 @@ ssize_t	ft_nl_index(char *backup)
 	return (-1);
 }
 
-void	ft_fill_line(char **backup, char **line, ssize_t nl_index)
+void	ft_fill_line(char **backup, char **line, ssize_t nl_line)
 {
 	char	*temp;
 	ssize_t	i;
 
-	if (!(*line = (char *)malloc(sizeof(char) * (nl_index + 1))))
+	if (!(*line = (char *)malloc(sizeof(char) * (nl_line + 1))))
 		return ;
 	i = 0;
-	while (i < nl_index)
+	while (i < nl_line)
 	{
 		(*line)[i] = (*backup)[i];
 		i++;
 	}
 	(*line)[i] = '\0';
-	if (ft_strlen(&(*backup)[nl_index + 1]) == 0)
+	if (ft_strlen(&(*backup)[nl_line + 1]) == 0)
 	{
 		free(*backup);
 		*backup = NULL;
 		return ;
 	}
-	temp = ft_strdup(&(*backup)[nl_index + 1]);
+	temp = ft_strdup(&(*backup)[nl_line + 1]);
 	free(*backup);
 	*backup = ft_strdup(temp);
 	free(temp);
@@ -54,13 +54,13 @@ void	ft_fill_line(char **backup, char **line, ssize_t nl_index)
 
 int		ft_final(char **backup, char **line, ssize_t read_len)
 {
-	ssize_t	nl_index;
+	ssize_t	nl_line;
 
 	if (read_len < 0)
 		return (-1);
-	if (*backup && (nl_index = ft_nl_index(*backup)) >= 0)
+	if (*backup && (nl_line = ft_nl_index(*backup)) >= 0)
 	{
-		ft_fill_line(backup, line, nl_index);
+		ft_fill_line(backup, line, nl_line);
 		return (1);
 	}
 	else if (*backup)
@@ -78,7 +78,7 @@ int		get_next_line(int fd, char **line)
 	char		buf[BUFFER_SIZE + 1];
 	static char	*backup[OPEN_MAX];
 	ssize_t		read_len;
-	ssize_t		nl_index;
+	ssize_t		nl_line;
 
 	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
 		return (-1);
@@ -86,9 +86,9 @@ int		get_next_line(int fd, char **line)
 	{
 		buf[read_len] = '\0';
 		backup[fd] = ft_strjoin(backup[fd], buf);
-		if ((nl_index = ft_nl_index(backup[fd])) >= 0)
+		if ((nl_line = ft_nl_index(backup[fd])) >= 0)
 		{
-			ft_fill_line(&backup[fd], line, nl_index);
+			ft_fill_line(&backup[fd], line, nl_line);
 			return (1);
 		}
 	}
