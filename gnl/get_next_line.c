@@ -6,13 +6,13 @@
 /*   By: najlee <najlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 12:22:54 by najlee            #+#    #+#             */
-/*   Updated: 2021/01/13 15:03:37 by najlee           ###   ########.fr       */
+/*   Updated: 2021/01/13 15:12:51 by najlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			*get_next_line(int fd, char **line)
+int	*get_next_line(int fd, char **line)
 {
 	static char	*backup[OPEN_MAX];
 	char		buf[BUFFER_SIZE + 1];
