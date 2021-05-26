@@ -1,24 +1,15 @@
 ## 📌 Libft
 
+이 프로젝트의 목적은 흔히 쓰이는 함수들을 재편성한 C 라이브러리를 구현하기 위한 것입니다.
 
 ## 📌 ft_printf
 
+이 프로젝트의 목적은 printf 의 `%d`, `%f`, `%i`, `%u` `%p`, `%s`,`%c`, `%x`, `%X` 를 구현하는 것입니다.
 
 ## 📌 get_next_line
 
+이 프로젝트의 목적은 파일 디스크립터로부터 읽혀진, 개행으로 끝나는 한 줄을 반환하는 함수를 코드화 하는 것입니다.
 
 ## 📌 netwhat
 
-
-### Compiling
-Run `make`.
-
-### Running
-1. show window
-```
-./miniRT Multi-objects.rt
-```
-2. make bmp file
-```
-./miniRT Multi-objects.rt --save
-```
+이 프로젝트의 목적은 네트워크에 대해 알게 되고 그것이 내부에서 작동하는 일들에 대해 배울 수 있게 해주는 것입니다.
